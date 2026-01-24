@@ -1,0 +1,12 @@
+{
+    "Sidebar": {
+        "dashboard": "لوحة التحكم",
+        "equipment": "المعدات",
+        "subtitle": "معدات يُعتمد عليها"
+    },
+    "Stats": {
+        "totalEquipment": "إجمالي المعدات",
+        "activeRentals": "عقود نشطة",
+        "maintenance": "الصيانة المطلوبة"
+    }
+}

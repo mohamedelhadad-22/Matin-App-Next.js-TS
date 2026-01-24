@@ -1,0 +1,12 @@
+{
+    "Sidebar": {
+        "dashboard": "Dashboard",
+        "equipment": "Equipment",
+        "subtitle": "Reliable Equipment"
+    },
+    "Stats": {
+        "totalEquipment": "Total Equipment",
+        "activeRentals": "Active Rentals",
+        "maintenance": "Maintenance Needed"
+    }
+}
