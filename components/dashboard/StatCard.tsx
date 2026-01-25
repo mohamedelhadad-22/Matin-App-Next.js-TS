@@ -26,7 +26,7 @@ export default function StatCard({ title, value, icon, trend }: StatCardProps) {
                 </div>
 
                 {/* Icon Wrapper */}
-                <div className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-xl text-ratal-primary">
+                <div className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-xl text-matin-primary">
                     {icon}
                 </div>
             </div>

@@ -2,9 +2,9 @@
 
 @theme {
   --color-matin-primary: #0F3D2E;
-  --color-ratal-action: #F7931E;
-  --color-ratal-secondary: #D6C4A1;
-  --color-ratal-text: #475569;
+  --color-matin-action: #F7931E;
+  --color-matin-secondary: #D6C4A1;
+  --color-matin-text: #475569;
 
   --font-ibm: var(--font-ibm);
 
@@ -13,6 +13,6 @@
 
 body {
   background-color: #F5F5F5;
-  color: var(--color-ratal-text);
+  color: var(--color-matin-text);
   font-family: var(--font-ibm);
 }
