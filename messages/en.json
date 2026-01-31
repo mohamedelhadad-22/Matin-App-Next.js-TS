@@ -8,5 +8,70 @@
         "totalEquipment": "Total Equipment",
         "activeRentals": "Active Rentals",
         "maintenance": "Maintenance Needed"
+    },
+    "Footer": {
+        "brandName": "MATIN",
+        "description": "MATIN - Ecosystem of equipment and services",
+        "quickLinks": "Quick Links",
+        "contactUs": "Contact Us",
+        "contactText": "If you want to contact us, please contact us at the following number: 123-456-789",
+        "newsletter": "Newsletter",
+        "newsletterText": "Subscribe to our newsletter to listen to the latest news and updates.",
+        "emailPlaceholder": "Email",
+        "copyright": "Copyright © {year} {brandName}. All rights reserved."
+    },
+    "LandingPage": {
+        "featuredTitle": "Latest Added Equipment",
+        "featuredDescription": "Equipment checked and ready for work",
+        "viewAllButton": "View All",
+        "heroTitle": "Find the right equipment for your project",
+        "heroDescription": "Discover our selection of high-quality equipment for all your construction needs.",
+        "searchPlaceholder": "Search for equipment (example: excavator, bulldozer...)",
+        "searchButton": "Search",
+        "categoriesTitle": "Explore Categories",
+        "categoriesDescription": "Discover our selection of high-quality equipment for all your construction needs.",
+        "categoriesButton": "View All"
+    },
+    "ProductCard": {
+        "rentFrequency": "Rent Frequency",
+        "details": "Details",
+        "model": "Model",
+        "daily": "Daily",
+        "monthly": "Monthly",
+        "yearly": "Yearly",
+        "withOperator": "With Operator",
+        "operatorCost": "Operator Cost",
+        "location": "Location",
+        "coordinates": "Coordinates",
+        "latitude": "Latitude",
+        "longitude": "Longitude",
+        "ownerId": "Owner ID",
+        "createdAt": "Created At",
+        "updatedAt": "Updated At",
+        "frequencyRent": "Frequency Rent"
+    },
+    "FilterSidebar": {
+        "sectorTitle": "Sector",
+        "priceTitle": "Daily Price (SR)",
+        "applyPriceButton": "Apply Price",
+        "resetButton": "Reset All",
+        "priceFrom": "From",
+        "priceTo": "To",
+        "filterTitle": "Filter results",
+        "filterDescription": "Filters will be added here...",
+        "noResults": "No results",
+        "tryDifferentKeywords": "Try searching with different keywords"
+    },
+    "SearchPage": {
+        "clearFilters": "Clear filters",
+        "searchPlaceholder": "Search for equipment (example: excavator, bulldozer...)",
+        "resultsCount": "Found {count} results",
+        "filterButton": "Filter results",
+        "filterTitle": "Filter results",
+        "filterDescription": "Filters will be added here...",
+        "noResults": "No results",
+        "tryDifferentKeywords": "Try searching with different keywords",
+        "results": "results",
+        "noResultsDescription": "Try searching with different keywords"
     }
 }

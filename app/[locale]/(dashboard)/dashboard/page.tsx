@@ -7,7 +7,7 @@ export default async function DashboardPage() {
     const tGlobal = await getTranslations('Sidebar'); // Just to get generic titles if needed
 
     return (
-        <div>
+        <div className="w-full">
             {/* Page Header */}
             <header className="mb-8">
                 <h1 className="text-2xl font-bold text-gray-800">{tGlobal('dashboard')}</h1>
