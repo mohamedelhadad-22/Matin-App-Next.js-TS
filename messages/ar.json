@@ -8,5 +8,70 @@
         "totalEquipment": "إجمالي المعدات",
         "activeRentals": "عقود نشطة",
         "maintenance": "الصيانة المطلوبة"
+    },
+    "Footer": {
+        "brandName": "متين",
+        "description": "متين - معدات تكنولوجيا المعلومات",
+        "quickLinks": "روابط سريعة",
+        "contactUs": "اتصل بنا",
+        "contactText": "إذا كنت ترغب في التواصل معنا، يرجى الاتصال بنا على الرقم التالي: 123-456-789",
+        "newsletter": "النشرة البريدية",
+        "newsletterText": "اشترك في النشرة البريدية لدينا للاستماع إلى آخر الأخبار والتحديثات.",
+        "emailPlaceholder": "البريد الإلكتروني",
+        "copyright": "حقوق الطبع والنشر © {year} {brandName}. جميع الحقوق محفوظة."
+    },
+    "SearchPage": {
+        "searchPlaceholder": "ابحث عن معدة (مثال: حفار، رافعة...)",
+        "resultsCount": "تم العثور على {count} نتائج",
+        "filterButton": "تصفية النتائج",
+        "filterTitle": "تصفية النتائج",
+        "filterDescription": "سيتم إضافة الفلاتر هنا...",
+        "noResults": "لا توجد نتائج",
+        "tryDifferentKeywords": "جرب البحث بكلمات مختلفة",
+        "clearFilters": "مسح كل الفلاتر",
+        "results": "نتائج",
+        "noResultsDescription": "جرب البحث بكلمات مختلفة"
+    },
+    "LandingPage": {
+        "featuredTitle": "أحدث المعدات المضافة",
+        "featuredDescription": "معدات تم فحصها وجاهزة للعمل فوراً",
+        "viewAllButton": "عرض الكل",
+        "heroTitle": "ابحث عن معدة (مثال: حفار، رافعة...)",
+        "heroDescription": "اكتشف اختيارنا من المعدات عالية الجودة لجميع احتياجات بناءك.",
+        "searchPlaceholder": "ابحث عن معدة (مثال: حفار، رافعة...)",
+        "searchButton": "بحث",
+        "categoriesTitle": "استكشف الفئات",
+        "categoriesDescription": "اكتشف اختيارنا من المعدات عالية الجودة لجميع احتياجات بناءك.",
+        "categoriesButton": "عرض الكل"
+    },
+    "ProductCard": {
+        "rentFrequency": "الإيجار",
+        "details": "تفاصيل",
+        "model": "النموذج",
+        "daily": "يومي",
+        "monthly": "شهري",
+        "yearly": "سنوي",
+        "withOperator": "مع المشرف",
+        "operatorCost": "تكلفة المشرف",
+        "location": "الموقع",
+        "coordinates": "الإحداثيات",
+        "latitude": "العرض",
+        "longitude": "الطول",
+        "ownerId": "معرف المالك",
+        "createdAt": "تم الإنشاء في",
+        "updatedAt": "تم التحديث في",
+        "frequencyRent": "الإيجار"
+    },
+    "FilterSidebar": {
+        "sectorTitle": "القطاع",
+        "priceTitle": "السعر اليومي (ر.س)",
+        "applyPriceButton": "تطبيق السعر",
+        "resetButton": "مسح الكل",
+        "priceFrom": "من",
+        "priceTo": "إلى",
+        "filterTitle": "تصفية النتائج",
+        "filterDescription": "سيتم إضافة الفلاتر هنا...",
+        "noResults": "لا توجد نتائج",
+        "tryDifferentKeywords": "جرب البحث بكلمات مختلفة"
     }
 }

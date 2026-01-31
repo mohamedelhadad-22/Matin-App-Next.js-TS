@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Sans_Arabic } from "next/font/google";
 import "../globals.css";
-import Sidebar from "@/components/Sidebar";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-
+// import { routing } from '@/i18n/routing';
 // Configure font
 const ibmPlex = IBM_Plex_Sans_Arabic({
   subsets: ["arabic", "latin"],
@@ -43,14 +42,7 @@ export default async function RootLayout({
     <html lang={locale} dir={direction}>
       <body className={`${ibmPlex.className} flex bg-[#F5F5F5] min-h-screen text-[#475569]`}>
         <NextIntlClientProvider messages={messages}>
-
-          {/* Sidebar needs to know the locale too, handled automatically by context */}
-          <Sidebar />
-
-          <main className="flex-1 p-8 overflow-y-auto h-screen">
-            {children}
-          </main>
-
+          {children}
         </NextIntlClientProvider>
       </body>
     </html>
