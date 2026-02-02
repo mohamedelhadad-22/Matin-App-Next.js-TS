@@ -40,7 +40,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} dir={direction}>
-      <body className={`${ibmPlex.className} flex bg-[#F5F5F5] min-h-screen text-[#475569]`}>
+      <body className={`${ibmPlex.className} min-h-screen bg-background text-foreground antialiased`}>
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>

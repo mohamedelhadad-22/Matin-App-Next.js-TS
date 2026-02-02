@@ -73,5 +73,88 @@
         "tryDifferentKeywords": "Try searching with different keywords",
         "results": "results",
         "noResultsDescription": "Try searching with different keywords"
+    },
+    "MarketplaceLayout": {
+        "logo": "MATIN",
+        "nav": {
+            "search": "Search",
+            "about": "About MATIN",
+            "contact": "Contact Us"
+        },
+        "actions": {
+            "login": "Login",
+            "register": "Register"
+        },
+        "footer": {
+            "about": "About MATIN",
+            "contact": "Contact Us",
+            "privacy": "Privacy Policy",
+            "terms": "Terms of Use"
+        }
+    },
+    "marketplace": {
+        "equipment": {
+            "breadcrumb": "Equipment",
+            "description": "Equipment Description",
+            "noDescription": "No description available for this equipment.",
+            "specs": "Technical Specifications",
+            "model": "Model",
+            "year": "Year of Manufacture",
+            "fuelType": "Fuel Type",
+            "notSpecified": "Not Specified",
+            "location": "Location",
+            "operator": "Operator",
+            "withOperator": "With Operator",
+            "withoutOperator": "Without Operator",
+            "insurance": "Insurance",
+            "included": "Included",
+            "dailyRateLabel": "Daily Rental Rate",
+            "perDay": "/ day",
+            "bookNow": "Book Now",
+            "contactOwner": "Contact Owner",
+            "inspected": "Inspected equipment meeting all standards",
+            "book": {
+                "title": "Complete Booking",
+                "date": "Rental Date",
+                "selectDates": "Select start and end date",
+                "userDetails": "Renter Information",
+                "name": "Full Name",
+                "namePlaceholder": "John Doe",
+                "phone": "Phone Number",
+                "phonePlaceholder": "05xxxxxxxx",
+                "company": "Company Name",
+                "companyPlaceholder": "Company...",
+                "orderSummary": "Order Summary",
+                "dailyRate": "Daily Rate",
+                "duration": "Rental Duration",
+                "days": "days",
+                "subTotal": "Subtotal",
+                "tax": "VAT (15%)",
+                "total": "Total",
+                "confirmAndPay": "Confirm & Pay",
+                "processing": "Processing...",
+                "safeAndSecure": "100% Safe & Secure Payment",
+                "success": "Booking Successful!",
+                "successMessage": "Your request has been received.",
+                "successDescription": "We will contact you soon to confirm the details.",
+                "backToHome": "Back to Home",
+                "done": "Done",
+                "select": "Select"
+            }
+        }
+    },
+    "Sectors": {
+        "Construction": "Construction",
+        "Industrial": "Industrial",
+        "Agricultural": "Agricultural",
+        "Transportation": "Transportation",
+        "Mining": "Mining",
+        "Oil & Gas": "Oil & Gas"
+    },
+    "EquipmentStatus": {
+        "available": "Available",
+        "rented": "Rented",
+        "maintenance": "Maintenance",
+        "unavailable": "Unavailable"
     }
 }

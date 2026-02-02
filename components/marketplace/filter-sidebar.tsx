@@ -20,6 +20,7 @@ export function FilterSidebar() {
     const router = useRouter()
     const searchParams = useSearchParams()
     const t = useTranslations('FilterSidebar')
+    const tSectors = useTranslations('Sectors')
 
     // 1. Read the current values from the URL (so they persist on refresh)
     const currentSector = searchParams.get("sector")
@@ -84,7 +85,7 @@ export function FilterSidebar() {
                                 className="w-4 h-4 text-matin-primary focus:ring-matin-primary border-gray-300"
                             />
                             <label htmlFor={sector} className="text-sm text-gray-600 cursor-pointer select-none">
-                                {sector}
+                                {tSectors(sector)}
                             </label>
                         </div>
                     ))}

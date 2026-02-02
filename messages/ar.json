@@ -73,5 +73,88 @@
         "filterDescription": "سيتم إضافة الفلاتر هنا...",
         "noResults": "لا توجد نتائج",
         "tryDifferentKeywords": "جرب البحث بكلمات مختلفة"
+    },
+    "MarketplaceLayout": {
+        "logo": "متين",
+        "nav": {
+            "search": "بحث",
+            "about": "عن متين",
+            "contact": "اتصل بنا"
+        },
+        "actions": {
+            "login": "تسجيل الدخول",
+            "register": "حساب جديد"
+        },
+        "footer": {
+            "about": "عن متين",
+            "contact": "اتصل بنا",
+            "privacy": "سياسة الخصوصية",
+            "terms": "الشروط والأحكام"
+        }
+    },
+    "marketplace": {
+        "equipment": {
+            "breadcrumb": "المعدات",
+            "description": "وصف المعدة",
+            "noDescription": "لا يوجد وصف متاح لهذه المعدة حالياً.",
+            "specs": "المواصفات الفنية",
+            "model": "الموديل",
+            "year": "سنة الصنع",
+            "fuelType": "نوع الوقود",
+            "notSpecified": "غير محدد",
+            "location": "الموقع",
+            "operator": "السائق",
+            "withOperator": "شامل السائق",
+            "withoutOperator": "بدون سائق",
+            "insurance": "التأمين",
+            "included": "شامل",
+            "dailyRateLabel": "سعر الإيجار اليومي",
+            "perDay": "/ يوم",
+            "bookNow": "احجز الآن",
+            "contactOwner": "تواصل مع المالك",
+            "inspected": "معدة مفحوصة ومطابقة للمواصفات",
+            "book": {
+                "title": "إتمام الحجز",
+                "date": "تاريخ الإيجار",
+                "selectDates": "اختر تاريخ البداية والنهاية",
+                "userDetails": "بيانات المستأجر",
+                "name": "الاسم الكامل",
+                "namePlaceholder": "محمد أحمد",
+                "phone": "رقم الجوال",
+                "phonePlaceholder": "05xxxxxxxx",
+                "company": "اسم الشركة",
+                "companyPlaceholder": "شركة...",
+                "orderSummary": "ملخص الطلب",
+                "dailyRate": "سعر الإيجار اليومي",
+                "duration": "مدة الإيجار",
+                "days": "أيام",
+                "subTotal": "المجموع الفرعي",
+                "tax": "ضريبة القيمة المضافة (15%)",
+                "total": "الإجمالي",
+                "confirmAndPay": "تأكيد والدفع",
+                "processing": "جاري المعالجة...",
+                "safeAndSecure": "دفع آمن ومشفر 100%",
+                "success": "تم الحجز بنجاح!",
+                "successMessage": "تم استلام طلبك بنجاح.",
+                "successDescription": "سيتم التواصل معك قريباً لتأكيد التفاصيل.",
+                "backToHome": "العودة للرئيسية",
+                "done": "تم",
+                "select": "اختيار"
+            }
+        }
+    },
+    "Sectors": {
+        "Construction": "الإنشاءات",
+        "Industrial": "الصناعي",
+        "Agricultural": "الزراعي",
+        "Transportation": "النقل",
+        "Mining": "التعدين",
+        "Oil & Gas": "النفط والغاز"
+    },
+    "EquipmentStatus": {
+        "available": "متاح",
+        "rented": "مؤجر",
+        "maintenance": "صيانة",
+        "unavailable": "غير متاح"
     }
 }
