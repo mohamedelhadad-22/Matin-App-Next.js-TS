@@ -20,6 +20,11 @@ interface EquipmentPageProps {
 
 export default async function EquipmentDetailsPage({ params }: EquipmentPageProps) {
     const t = await getTranslations("marketplace.equipment");
+    const tCat = await getTranslations("Categories");
+    const tStatus = await getTranslations("EquipmentStatus");
+    const tLoc = await getTranslations("Locations");
+    const tFuel = await getTranslations("FuelTypes");
+    const tSectors = await getTranslations("Sectors");
     const { id } = await params;
 
     const equipment = MOCK_EQUIPMENT.find(eq => eq.id === id)
@@ -33,7 +38,7 @@ export default async function EquipmentDetailsPage({ params }: EquipmentPageProp
                 <div className="flex items-center gap-2 text-sm text-gray-500 mb-6">
                     <Link href="/search" className="hover:text-matin-primary">{t("breadcrumb")}</Link>
                     <span>/</span>
-                    <span className="text-gray-900 font-medium">{equipment.category}</span>
+                    <span className="text-gray-900 font-medium">{tCat(equipment.category)}</span>
                     <span>/</span>
                     <span>{equipment.name}</span>
                 </div>
@@ -52,7 +57,7 @@ export default async function EquipmentDetailsPage({ params }: EquipmentPageProp
                                     className="w-full h-full object-cover"
                                 />
                                 <Badge className="absolute top-4 left-4 text-sm px-3 py-1 uppercase">
-                                    {equipment.status}
+                                    {tStatus(equipment.status)}
                                 </Badge>
                             </div>
                         </div>
@@ -66,7 +71,7 @@ export default async function EquipmentDetailsPage({ params }: EquipmentPageProp
 
                             <div className="mt-6 flex flex-wrap gap-3">
                                 {equipment.sectors.map(sector => (
-                                    <Badge key={sector} variant="secondary">{sector}</Badge>
+                                    <Badge key={sector} variant="secondary">{tSectors(sector)}</Badge>
                                 ))}
                             </div>
                         </div>
@@ -77,8 +82,8 @@ export default async function EquipmentDetailsPage({ params }: EquipmentPageProp
                             <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
                                 <SpecItem icon={<Gauge />} label={t("model")} value={equipment.model} />
                                 <SpecItem icon={<CalendarDays />} label={t("year")} value={equipment.manufacturingYear} />
-                                <SpecItem icon={<Fuel />} label={t("fuelType")} value={equipment.fuelType || t("notSpecified")} />
-                                <SpecItem icon={<MapPin />} label={t("location")} value={equipment.location} />
+                                <SpecItem icon={<Fuel />} label={t("fuelType")} value={equipment.fuelType ? tFuel(equipment.fuelType) : t("notSpecified")} />
+                                <SpecItem icon={<MapPin />} label={t("location")} value={tLoc(equipment.location)} />
                                 <SpecItem icon={<User />} label={t("operator")} value={equipment.withOperator ? t("withOperator") : t("withoutOperator")} />
                                 <SpecItem icon={<ShieldCheck />} label={t("insurance")} value={t("included")} />
                             </div>

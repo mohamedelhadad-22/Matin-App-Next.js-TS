@@ -7,6 +7,7 @@ import { MOCK_EQUIPMENT } from "@/lib/mock-data";
 
 export default function LandingPage() {
     const t = useTranslations('LandingPage');
+    const tCat = useTranslations('Categories');
     return (
         <div className="w-full">
             {/* Hero Section */}
@@ -40,7 +41,7 @@ export default function LandingPage() {
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                     {['Heavy Machinery', 'Generators', 'Earthmovers', 'Cranes'].map((cat) => (
                         <div key={cat} className="p-6 border rounded-xl hover:shadow-lg transition cursor-pointer text-center bg-gray-50">
-                            <span className="font-bold text-gray-700">{cat}</span>
+                            <span className="font-bold text-gray-700">{tCat(cat)}</span>
                         </div>
                     ))}
                 </div>

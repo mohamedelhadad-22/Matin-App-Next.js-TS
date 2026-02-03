@@ -63,7 +63,7 @@ export default function BookingPage({ params }: { params: { id: string } }) {
     // 4. Submit Handler
     const onSubmit = async (data: BookingFormValues) => {
         if (daysCount === 0) {
-            alert("يرجى اختيار التاريخ أولاً")
+            alert(t("selectDatesFirst"))
             return;
         }
 
@@ -115,7 +115,7 @@ export default function BookingPage({ params }: { params: { id: string } }) {
                                                         setIsCalendarOpen(false)
                                                     }}
                                                 >
-                                                    {days} Days
+                                                    {t("days", { count: days })}
                                                 </Button>
                                             ))}
                                             <Button
@@ -124,7 +124,7 @@ export default function BookingPage({ params }: { params: { id: string } }) {
                                                 className="text-xs h-7 ml-auto text-red-500 hover:text-red-600 hover:bg-red-50"
                                                 onClick={() => setDate(undefined)}
                                             >
-                                                Clear
+                                                {t("clear")}
                                             </Button>
                                             <Button
                                                 size="sm"
@@ -171,22 +171,13 @@ export default function BookingPage({ params }: { params: { id: string } }) {
             </div>
 
             {/* Success Modal */}
-            <AlertDialog open={showSuccess} onOpenChange={setShowSuccess}>
-                <AlertDialogContent>
-                    <div className="flex justify-center mb-4">
-                        <div className="h-16 w-16 bg-green-100 rounded-full flex items-center justify-center">
-                            <CheckCircle2 className="h-10 w-10 text-green-600" />
-                        </div>
-                    </div>
-                    <AlertDialogHeader>
-                        <AlertDialogTitle className="text-center">{t("success")}</AlertDialogTitle>
-                        <AlertDialogDescription className="text-center">{t("successMessage")}</AlertDialogDescription>
-                    </AlertDialogHeader>
-                    <AlertDialogFooter>
-                        <AlertDialogAction onClick={() => router.push('/')} className="w-full">{t("backToHome")}</AlertDialogAction>
-                    </AlertDialogFooter>
-                </AlertDialogContent>
-            </AlertDialog>
+            <AlertDialogDescription className="text-center space-y-2">
+                <span className="block font-bold text-gray-900">تم إرسال طلب عرض السعر بنجاح! 🎉</span>
+                <span className="block">
+                    سيقوم المورد <strong>(شركة ATAD)</strong> بمراجعة تفاصيل طلبك والرد عليك بعرض سعر نهائي قريباً.
+                    يمكنك متابعة حالة الطلب من لوحة التحكم.
+                </span>
+            </AlertDialogDescription>
 
         </div>
     )

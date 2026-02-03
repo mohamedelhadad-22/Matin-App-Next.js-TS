@@ -117,29 +117,33 @@
                 "title": "Complete Booking",
                 "date": "Rental Date",
                 "selectDates": "Select start and end date",
-                "userDetails": "Renter Information",
-                "name": "Full Name",
-                "namePlaceholder": "John Doe",
-                "phone": "Phone Number",
-                "phonePlaceholder": "05xxxxxxxx",
-                "company": "Company Name",
-                "companyPlaceholder": "Company...",
-                "orderSummary": "Order Summary",
-                "dailyRate": "Daily Rate",
-                "duration": "Rental Duration",
-                "days": "days",
-                "subTotal": "Subtotal",
-                "tax": "VAT (15%)",
-                "total": "Total",
-                "confirmAndPay": "Confirm & Pay",
-                "processing": "Processing...",
-                "safeAndSecure": "100% Safe & Secure Payment",
-                "success": "Booking Successful!",
-                "successMessage": "Your request has been received.",
-                "successDescription": "We will contact you soon to confirm the details.",
                 "backToHome": "Back to Home",
                 "done": "Done",
-                "select": "Select"
+                "select": "Select",
+                "clear": "Clear",
+                "summaryEstimated": "Order Summary (Estimated)",
+                "dailyRateGuideline": "Daily Rate (Guideline)",
+                "durationRequired": "Required Duration",
+                "days": "{count} days",
+                "totalEstimate": "Total Estimate",
+                "priceNote": "⚠️ This price is preliminary. The supplier will review the request and send the final quote including tax and transport.",
+                "sending": "Sending...",
+                "sendQuoteRequest": "Send Quote Request",
+                "noChargeWarning": "No amount will be deducted now",
+                "selectDatesFirst": "Please select dates first",
+                "renterDetails": "Renter Information",
+                "fullName": "Full Name",
+                "fullNamePlaceholder": "John Doe...",
+                "phone": "Mobile Number",
+                "phonePlaceholder": "05xxxxxxxx",
+                "company": "Company Name (Optional)",
+                "companyPlaceholder": "Company...",
+                "notes": "Notes (Optional)",
+                "notesPlaceholder": "Example: I need the equipment with an operator, or work inside Aramco area...",
+                "errors": {
+                    "nameMin": "Name must be at least 3 characters",
+                    "phoneInvalid": "Invalid mobile number (must start with 05 and be 10 digits)"
+                }
             }
         }
     },
@@ -156,5 +160,21 @@
         "rented": "Rented",
         "maintenance": "Maintenance",
         "unavailable": "Unavailable"
+    },
+    "Categories": {
+        "Heavy Machinery": "Heavy Machinery",
+        "Earthmovers": "Earthmovers",
+        "Generators": "Generators",
+        "Loaders": "Loaders",
+        "Cranes": "Cranes"
+    },
+    "Locations": {
+        "Riyadh": "Riyadh",
+        "Jeddah": "Jeddah",
+        "Dammam": "Dammam",
+        "Neom": "Neom"
+    },
+    "FuelTypes": {
+        "Diesel": "Diesel"
     }
 }

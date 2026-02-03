@@ -117,29 +117,33 @@
                 "title": "إتمام الحجز",
                 "date": "تاريخ الإيجار",
                 "selectDates": "اختر تاريخ البداية والنهاية",
-                "userDetails": "بيانات المستأجر",
-                "name": "الاسم الكامل",
-                "namePlaceholder": "محمد أحمد",
-                "phone": "رقم الجوال",
-                "phonePlaceholder": "05xxxxxxxx",
-                "company": "اسم الشركة",
-                "companyPlaceholder": "شركة...",
-                "orderSummary": "ملخص الطلب",
-                "dailyRate": "سعر الإيجار اليومي",
-                "duration": "مدة الإيجار",
-                "days": "أيام",
-                "subTotal": "المجموع الفرعي",
-                "tax": "ضريبة القيمة المضافة (15%)",
-                "total": "الإجمالي",
-                "confirmAndPay": "تأكيد والدفع",
-                "processing": "جاري المعالجة...",
-                "safeAndSecure": "دفع آمن ومشفر 100%",
-                "success": "تم الحجز بنجاح!",
-                "successMessage": "تم استلام طلبك بنجاح.",
-                "successDescription": "سيتم التواصل معك قريباً لتأكيد التفاصيل.",
                 "backToHome": "العودة للرئيسية",
                 "done": "تم",
-                "select": "اختيار"
+                "select": "اختيار",
+                "clear": "مسح",
+                "summaryEstimated": "ملخص الطلب (تقديري)",
+                "dailyRateGuideline": "سعر اليوم (الاسترشادي)",
+                "durationRequired": "المدة المطلوبة",
+                "days": "{count} أيام",
+                "totalEstimate": "إجمالي التقدير",
+                "priceNote": "⚠️ هذا السعر مبدئي. سيقوم المورد بمراجعة الطلب وإرسال عرض السعر النهائي شامل الضريبة والنقل.",
+                "sending": "جاري الإرسال...",
+                "sendQuoteRequest": "إرسال طلب عرض سعر",
+                "noChargeWarning": "لن يتم خصم أي مبلغ الآن",
+                "selectDatesFirst": "يرجى اختيار التاريخ أولاً",
+                "renterDetails": "بيانات المستأجر",
+                "fullName": "الاسم الكامل",
+                "fullNamePlaceholder": "محمد أحمد...",
+                "phone": "رقم الجوال",
+                "phonePlaceholder": "05xxxxxxxx",
+                "company": "اسم الشركة (اختياري)",
+                "companyPlaceholder": "شركة...",
+                "notes": "ملاحظات (اختياري)",
+                "notesPlaceholder": "مثال: أحتاج المعدة مع سائق، أو العمل داخل منطقة أرامكو...",
+                "errors": {
+                    "nameMin": "الاسم يجب أن يكون 3 أحرف على الأقل",
+                    "phoneInvalid": "رقم الجوال غير صحيح (يجب أن يبدأ بـ 05 ويتكون من 10 أرقام)"
+                }
             }
         }
     },
@@ -156,5 +160,21 @@
         "rented": "مؤجر",
         "maintenance": "صيانة",
         "unavailable": "غير متاح"
+    },
+    "Categories": {
+        "Heavy Machinery": "معدات ثقيلة",
+        "Earthmovers": "ناقلات أتربة",
+        "Generators": "مولدات كهرباء",
+        "Loaders": "لوادر",
+        "Cranes": "أوناش"
+    },
+    "Locations": {
+        "Riyadh": "الرياض",
+        "Jeddah": "جدة",
+        "Dammam": "الدمام",
+        "Neom": "نيوم"
+    },
+    "FuelTypes": {
+        "Diesel": "ديزل"
     }
 }

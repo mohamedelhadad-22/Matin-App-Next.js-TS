@@ -6,12 +6,15 @@ import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/routing";
 import { CalendarDays, Gauge } from "lucide-react";
 import { Equipment } from "@/types";
+
 interface ProductCardProps {
     item: Equipment;
 }
+
 export function ProductCard({ item }: ProductCardProps) {
     const t = useTranslations('ProductCard');
     const tStatus = useTranslations('EquipmentStatus');
+
     return (
         <Link href={`/equipment/${item.id}`} className="block h-full group">
             <div className="group bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col h-full">
@@ -65,7 +68,7 @@ export function ProductCard({ item }: ProductCardProps) {
                                         maximumFractionDigits: 0,
                                     }).format(item.dailyRate)}
                                 </span>
-                                <span className="text-xs text-gray-400 font-normal"> / {item.frequencyRent}</span>
+                                <span className="text-xs text-gray-400 font-normal"> / {t(item.frequencyRent.toLowerCase())}</span>
                             </div>
                         </div>
                         <Button size="sm" variant="outline">
