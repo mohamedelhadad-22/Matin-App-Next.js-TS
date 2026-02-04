@@ -1,8 +1,30 @@
 {
-    "Sidebar": {
-        "dashboard": "لوحة التحكم",
-        "equipment": "المعدات",
-        "subtitle": "معدات يُعتمد عليها"
+    "dashboard": {
+        "sidebar": {
+            "overview": "نظرة عامة",
+            "fleet": "إدارة الأسطول",
+            "vendorOrders": "الطلبات الواردة",
+            "wallet": "المحفظة",
+            "projects": "مشاريعي",
+            "myOrders": "طلباتي",
+            "invoices": "الفواتير",
+            "role_vendor": "مورد",
+            "role_tenant": "عميل",
+            "settings": "الإعدادات"
+        },
+        "equipment": {
+            "title": "قائمة المعدات",
+            "subtitle": "إدارة أسطولك وتتبع الحالة",
+            "addButton": "إضافة معدة"
+        }
+    },
+    "DashboardHeader": {
+        "searchPlaceholder": "ابحث عن معدات، طلبات، عملاء...",
+        "userName": "المستخدم",
+        "userRole": "مدير النظام",
+        "profile": "الملف الشخصي",
+        "settings": "الإعدادات",
+        "logout": "تسجيل الخروج"
     },
     "Stats": {
         "totalEquipment": "إجمالي المعدات",

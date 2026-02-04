@@ -1,8 +1,30 @@
 {
-    "Sidebar": {
-        "dashboard": "Dashboard",
-        "equipment": "Equipment",
-        "subtitle": "Reliable Equipment"
+    "dashboard": {
+        "sidebar": {
+            "overview": "Overview",
+            "fleet": "Fleet Management",
+            "vendorOrders": "Orders Received",
+            "wallet": "Wallet",
+            "projects": "My Projects",
+            "myOrders": "My Orders",
+            "invoices": "Invoices",
+            "role_vendor": "Vendor",
+            "role_tenant": "Tenant",
+            "settings": "Settings"
+        },
+        "equipment": {
+            "title": "Equipment List",
+            "subtitle": "Manage your fleet and track status",
+            "addButton": "Add Equipment"
+        }
+    },
+    "DashboardHeader": {
+        "searchPlaceholder": "Search equipment, orders, customers...",
+        "userName": "User",
+        "userRole": "Administrator",
+        "profile": "Profile",
+        "settings": "Settings",
+        "logout": "Logout"
     },
     "Stats": {
         "totalEquipment": "Total Equipment",
