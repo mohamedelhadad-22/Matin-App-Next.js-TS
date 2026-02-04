@@ -26,7 +26,7 @@ const data: Equipment[] = [
 ]
 
 export default async function EquipmentPage() {
-    const t = await getTranslations('Sidebar');
+    const t = await getTranslations('dashboard.equipment');
 
     return (
         <div className="container mx-auto py-10">
@@ -34,15 +34,15 @@ export default async function EquipmentPage() {
             {/* Page Header */}
             <div className="flex justify-between items-center mb-8">
                 <div>
-                    <h1 className="text-3xl font-bold text-gray-800 tracking-tight">Equipment List</h1>
-                    <p className="text-gray-500 mt-1">Manage your fleet and track status</p>
+                    <h1 className="text-3xl font-bold text-gray-800 tracking-tight">{t('title')}</h1>
+                    <p className="text-gray-500 mt-1">{t('subtitle')}</p>
                 </div>
                 <Link
                     href="/equipment/new"
                     className={cn(buttonVariants({ variant: "default" }))}
                 >
                     <PlusIcon className="w-4 h-4 mr-2" />
-                    Add Equipment
+                    {t('addButton')}
                 </Link>
             </div>
 

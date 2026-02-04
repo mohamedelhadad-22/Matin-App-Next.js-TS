@@ -1,39 +1,22 @@
-import StatCard from "@/components/dashboard/StatCard";
-import { getTranslations } from 'next-intl/server'; // 1. Server-side translation function
+"use client"
 
-export default async function DashboardPage() {
-    // 2. Await the translations (Async operation on server)
-    const t = await getTranslations('Stats');
-    const tGlobal = await getTranslations('Sidebar'); // Just to get generic titles if needed
+import { useTranslations } from "next-intl"
+
+export default function DashboardPage() {
+    const t = useTranslations("dashboard.sidebar") // هنجيب النصوص عشان نجرب
 
     return (
-        <div className="w-full">
-            {/* Page Header */}
-            <header className="mb-8">
-                <h1 className="text-2xl font-bold text-gray-800">{tGlobal('dashboard')}</h1>
-                <p className="text-gray-500">Welcome to Matin Dashboard</p>
-            </header>
+        <div className="space-y-4">
+            <h2 className="text-3xl font-bold tracking-tight">{t("overview")}</h2>
 
-            {/* Stats Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <StatCard
-                    title={t('totalEquipment')} // 3. Using the key from JSON
-                    value="142"
-                    icon="🚜"
-                    trend="+12"
-                />
-                <StatCard
-                    title={t('activeRentals')}
-                    value="28"
-                    icon="📄"
-                    trend="+5%"
-                />
-                <StatCard
-                    title={t('maintenance')}
-                    value="4"
-                    icon="🔧"
-                />
+            {/* Temporary Placeholder Content */}
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                {/* هنسيب المكان ده للكروت (KPIs) اللي اتفقنا عليها في الخطة */}
+                <div className="p-6 bg-white rounded-xl shadow-sm border">
+                    <div className="text-sm font-medium text-muted-foreground">إجمالي الدخل</div>
+                    <div className="text-2xl font-bold mt-2">SAR 45,231.89</div>
+                </div>
             </div>
         </div>
-    );
+    )
 }
