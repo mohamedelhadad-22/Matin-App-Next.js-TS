@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { User, Settings, LogOut, ChevronDown, Building2 } from 'lucide-react'; // 👈 ضيفنا أيقونة الشركة
+import { User, Settings, LogOut, ChevronDown, Building2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
     DropdownMenu,
@@ -12,7 +12,7 @@ import {
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Link } from '@/i18n/routing'; // 👈 1. استيراد اللينك الذكي
+import { Link } from '@/i18n/routing';
 
 export default function UserNav() {
     const t = useTranslations('DashboardHeader');
@@ -42,16 +42,13 @@ export default function UserNav() {
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
 
-                {/* 👈 2. ربط ملف الشركة */}
-                {/* استخدمنا asChild عشان نمرر التصميم للينك */}
                 <DropdownMenuItem asChild className="cursor-pointer">
                     <Link href="/dashboard/company/profile" className="flex w-full items-center">
                         <Building2 className="ltr:mr-2 rtl:ml-2 h-4 w-4" />
-                        <span>ملف الشركة</span> {/* ممكن تستخدم t('companyProfile') */}
+                        <span>ملف الشركة</span>
                     </Link>
                 </DropdownMenuItem>
 
-                {/* ربط الملف الشخصي للمستخدم (لو هتعمله مستقبلاً) */}
                 <DropdownMenuItem asChild className="cursor-pointer">
                     <Link href="/dashboard/profile" className="flex w-full items-center">
                         <User className="ltr:mr-2 rtl:ml-2 h-4 w-4" />

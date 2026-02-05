@@ -4,7 +4,7 @@ import { BasicInfoCard } from "@/components/dashboard/company/basic-info-card"
 import { DocumentCard } from "@/components/dashboard/company/document-card"
 import { Badge } from "@/components/ui/badge"
 import { useCompany } from "@/components/providers/company-context"
-
+import { AddressList } from "@/components/dashboard/company/addresses/address-list"
 export default function CompanyProfilePage() {
     const { status } = useCompany()
 
@@ -53,7 +53,8 @@ export default function CompanyProfilePage() {
                     />
                 </div>
             </div>
-
-        </div>
+            <div className="border-t border-gray-100 my-8" />
+            <AddressList />
+        </div >
     )
 }
