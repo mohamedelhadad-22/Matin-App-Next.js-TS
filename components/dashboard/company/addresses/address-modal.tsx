@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input"
 import { Checkbox } from "@/components/ui/checkbox"
 import { toast } from "sonner"
 import { Address } from "@/types/company"
+// استيراد السكيما من الملف الخارجي (زي ما طلبت) ✅
 import { addressSchema, AddressFormValues } from "@/lib/schemas/address"
 
 // Dynamic Map
@@ -44,10 +45,10 @@ export function AddressModal({ isOpen, onClose, onSuccess, addressToEdit }: Addr
             city: "",
             district: "",
             street_one: "",
-            building_number: "", // Added this field
+            building_number: "",
             latitude: 0,
             longitude: 0,
-            is_default: false,
+            is_default: false, // Explicit boolean
         },
     })
 
@@ -132,7 +133,7 @@ export function AddressModal({ isOpen, onClose, onSuccess, addressToEdit }: Addr
 
                         {/* Inputs Grid - هتتملي لوحدها لما تختار من الخريطة */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <FormField<AddressFormValues, "addres_title">
+                            <FormField
                                 control={form.control}
                                 name="addres_title"
                                 render={({ field }) => (
@@ -143,7 +144,7 @@ export function AddressModal({ isOpen, onClose, onSuccess, addressToEdit }: Addr
                                     </FormItem>
                                 )}
                             />
-                            <FormField<AddressFormValues, "city">
+                            <FormField
                                 control={form.control}
                                 name="city"
                                 render={({ field }) => (
@@ -154,7 +155,7 @@ export function AddressModal({ isOpen, onClose, onSuccess, addressToEdit }: Addr
                                     </FormItem>
                                 )}
                             />
-                            <FormField<AddressFormValues, "district">
+                            <FormField
                                 control={form.control}
                                 name="district"
                                 render={({ field }) => (
@@ -165,7 +166,7 @@ export function AddressModal({ isOpen, onClose, onSuccess, addressToEdit }: Addr
                                     </FormItem>
                                 )}
                             />
-                            <FormField<AddressFormValues, "street_one">
+                            <FormField
                                 control={form.control}
                                 name="street_one"
                                 render={({ field }) => (
@@ -176,7 +177,7 @@ export function AddressModal({ isOpen, onClose, onSuccess, addressToEdit }: Addr
                                     </FormItem>
                                 )}
                             />
-                            <FormField<AddressFormValues, "building_number">
+                            <FormField
                                 control={form.control}
                                 name="building_number"
                                 render={({ field }) => (
@@ -190,14 +191,14 @@ export function AddressModal({ isOpen, onClose, onSuccess, addressToEdit }: Addr
                         </div>
 
                         {/* Checkbox Fixed */}
-                        <FormField<AddressFormValues, "is_default">
+                        <FormField
                             control={form.control}
                             name="is_default"
                             render={({ field }) => (
                                 <FormItem className="flex flex-row items-start space-x-3 space-x-reverse space-y-0 rounded-md border p-4">
                                     <FormControl>
                                         <Checkbox
-                                            checked={field.value === true}
+                                            checked={field.value}
                                             onCheckedChange={field.onChange}
                                         />
                                     </FormControl>
