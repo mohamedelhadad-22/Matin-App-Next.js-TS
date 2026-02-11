@@ -1,6 +1,6 @@
 "use client"
 
-import Link from "next/link"
+import { Link } from "@/i18n/routing"
 import { AlertTriangle, ChevronRight, ChevronLeft } from "lucide-react"
 import { useCompany } from "@/components/providers/company-context"
 import { useLocale } from "next-intl"

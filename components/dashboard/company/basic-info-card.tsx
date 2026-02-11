@@ -31,7 +31,7 @@ export function BasicInfoCard() {
                 setData(profile);
             } catch (error) {
                 console.error(error);
-                // toast.error("فشل تحميل بيانات الشركة"); // ممكن نلغيها عشان الـ UX
+                toast.error("فشل تحميل بيانات الشركة");
             } finally {
                 setIsLoading(false);
             }

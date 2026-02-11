@@ -1,48 +1,39 @@
-import type { Metadata } from "next";
-import { IBM_Plex_Sans_Arabic } from "next/font/google";
-import "../globals.css";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-// import { routing } from '@/i18n/routing';
-// Configure font
-const ibmPlex = IBM_Plex_Sans_Arabic({
-  subsets: ["arabic", "latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700"],
-  variable: "--font-ibm",
-  display: "swap",
-});
+import { routing } from '@/i18n/routing';
+import { AuthProvider } from "@/components/providers/auth-provider";
+import { Toaster } from 'sonner';
+import "../globals.css";
 
-export const metadata: Metadata = {
-  title: "Matin | Equipment Admin",
-  description: "Administrative dashboard for Matin equipment rental system",
-};
-
-export default async function RootLayout({
+export default async function LocaleLayout({
   children,
   params
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  // Ensure that the incoming `locale` is valid
+
   const { locale } = await params;
-  if (!['en', 'ar'].includes(locale)) {
+
+  if (!routing.locales.includes(locale as any)) {
     notFound();
   }
 
-  // Providing all messages to the client
-  // side is the easiest way to get started
+  // import messages from next-intl
   const messages = await getMessages();
 
-  // Determine direction based on locale
-  const direction = locale === 'ar' ? 'rtl' : 'ltr';
-
   return (
-    <html lang={locale} dir={direction}>
-      <body className={`${ibmPlex.className} min-h-screen bg-background text-foreground antialiased`}>
+    <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+      <body suppressHydrationWarning={true}>
         <NextIntlClientProvider messages={messages}>
-          {children}
+
+          <AuthProvider>
+            {children}
+            <Toaster position="top-center" richColors
+              closeButton />
+          </AuthProvider>
+
         </NextIntlClientProvider>
       </body>
     </html>

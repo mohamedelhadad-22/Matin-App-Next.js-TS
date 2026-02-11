@@ -1,44 +1,32 @@
-export interface CompanyProfile {
-    id: string;
+// import { VerificationStatus } from "./auth"; // ممكن نعمل ملف common.ts للحاجات المشتركة
+
+// Create Company Payload
+export interface CreateCompanyDto {
     name: string;
     cr_number: string;
-    vat_number?: string;
-    address: Address;
-    logoUrl?: string;
-    status: 'PENDING' | 'VERIFIED' | 'REJECTED';
+    vat_number: string;
+    industry: string;
+    employee_count: number;
+    address: string;
+    city: string;
+    country_code: string;
+    is_approval_required: boolean;
+}
+
+// Company Profile Response
+export interface CompanyProfile {
+    id: number;
+    name: string;
+    verification_status: string;
+    owner_id: number;
+    created_at: string;
+    trust_score?: number;
+    trust_tier?: string;
+}
+
+// Employee Invitation
+export interface InviteEmployeeDto {
     email: string;
-    phone?: string;
-}
-
-export interface UpdateCompanyDto {
-    name?: string;
-    vatNumber?: string;
-    address?: Address;
-    cr_number?: string;
-    status?: string;
-    email?: string;
-    phone?: string;
-}
-
-export interface Address {
-    id: string;
-    company_id: string;
-    complete_address: string;
-    addres_title?: string;
-    city?: string;
-    country?: string;
-    province?: string;
-    district?: string;
-    street_one?: string;
-    street_two?: string;
-    national_address?: string;
-    building_number?: string;
-    postal_code?: string;
-    is_default?: boolean;
-    latitude: number;
-    longitude: number;
-    created_at?: string;
-    updated_at?: string;
-    created_by?: string;
-    updated_by?: string;
+    full_name: string;
+    role_in_company: string;
 }

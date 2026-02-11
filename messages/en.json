@@ -1,4 +1,60 @@
 {
+    "auth": {
+        "login": {
+            "title": "Login",
+            "subtitle": "Enter your details to access the platform",
+            "emailLabel": "Email Address",
+            "emailPlaceholder": "name@example.com",
+            "passwordLabel": "Password",
+            "passwordPlaceholder": "••••••••",
+            "submit": "Login",
+            "noAccount": "Don't have an account?",
+            "createAccount": "Create New Account",
+            "successWelcome": "Welcome back, {name}",
+            "failed": "Login failed",
+            "promoTitle": "Mateen Heavy Equipment",
+            "promoDesc": "Smart management for your fleet and projects."
+        },
+        "register": {
+            "title": "Create New Account",
+            "subtitle": "Choose the account type that suits your needs",
+            "step2Title": "Create Account",
+            "individual": "Individual User",
+            "individualDesc": "I want to rent equipment for my projects",
+            "company": "Company / Supplier",
+            "companyDesc": "I want to list my fleet or rent as a business",
+            "continue": "Continue",
+            "back": "Back",
+            "submit": "Create Account",
+            "alreadyHaveAccount": "Already have an account?",
+            "login": "Login",
+            "success": "Account created successfully!",
+            "promoTitle": "Mateen Heavy Equipment",
+            "promoDesc": "Join the largest equipment rental network in the Kingdom. Manage your fleet, track orders, and maximize profits with ease."
+        },
+        "fields": {
+            "fullName": "Full Name",
+            "email": "Email Address",
+            "phone": "Phone Number",
+            "password": "Password",
+            "confirmPassword": "Confirm Password",
+            "companyName": "Company Name",
+            "crNumber": "CR Number",
+            "vatNumber": "VAT Number"
+        },
+        "validation": {
+            "required": "This field is required",
+            "emailInvalid": "Invalid email address",
+            "passwordRequired": "Password is required",
+            "fullNameMin": "Full name is required (at least {min} characters)",
+            "phoneMin": "Phone number must be at least {min} digits",
+            "passwordMin": "Password must be at least {min} characters",
+            "confirmPasswordRequired": "Confirm password is required",
+            "passwordMismatch": "Passwords do not match",
+            "companyNameRequired": "Company name is required",
+            "crNumberRequired": "CR number is required ({min} digits)"
+        }
+    },
     "dashboard": {
         "sidebar": {
             "overview": "Overview",
@@ -10,7 +66,14 @@
             "invoices": "Invoices",
             "role_vendor": "Vendor",
             "role_tenant": "Tenant",
-            "settings": "Settings"
+            "role_admin": "Admin",
+            "settings": "Settings",
+            "team": "Team",
+            "trust_center": "Trust Center",
+            "users_management": "Users Management",
+            "companies": "Company Management",
+            "disputes": "Disputes",
+            "platform_settings": "Platform Settings"
         },
         "equipment": {
             "title": "Equipment List",
