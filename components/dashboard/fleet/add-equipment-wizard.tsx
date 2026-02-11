@@ -1,6 +1,6 @@
-"use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
 import { useTranslations } from "next-intl"
 import { useForm, useFieldArray } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -48,6 +48,9 @@ import {
     EquipmentCategories,
     EquipmentConditions
 } from "@/lib/schemas/equipment"
+import { equipmentService } from "@/services/equipment"
+import { addressService } from "@/services/addressService"
+import { Loader2 } from "lucide-react"
 
 // --- Dynamic Fields Configuration ---
 // This map defines which fields to show for each category in Step 2.
@@ -94,8 +97,26 @@ export function AddEquipmentWizard() {
     // The previous schema implementation expected `(key: string, params?: any) => string`.
     // Validating t signature: useTranslations returns a function that accepts key and options.
 
+    const router = useRouter()
+    const [isSubmitting, setIsSubmitting] = useState(false)
     const [currentStep, setCurrentStep] = useState(1)
     const [imagePreviews, setImagePreviews] = useState<{ file: File, preview: string }[]>([])
+    const [defaultAddressId, setDefaultAddressId] = useState<number | null>(null)
+
+    // Fetch default address on mount to handle address_id requirement
+    useEffect(() => {
+        const fetchAddress = async () => {
+            try {
+                const addresses = await addressService.getAddresses()
+                if (addresses && addresses.length > 0) {
+                    setDefaultAddressId(addresses[0].id)
+                }
+            } catch (error) {
+                console.error("Failed to fetch addresses", error)
+            }
+        }
+        fetchAddress()
+    }, [])
 
     const form = useForm<EquipmentFormValues>({
         resolver: zodResolver(schema),
@@ -187,18 +208,72 @@ export function AddEquipmentWizard() {
 
     // --- Submission ---
     const onSubmit = async (data: EquipmentFormValues) => {
-        try {
-            console.log("Submitting Equipment:", data)
-            // Here you would call equipmentService.create(data)
-            // Handle file uploads to S3/Cloudinary then replace `images` with URLs before API call
+        setIsSubmitting(true)
 
-            toast.success("Equipment listed successfully!")
-            // Redirect or reset
-            // router.push('/dashboard/fleet')
-        } catch (error) {
-            console.error(error)
-            toast.error("Failed to list equipment")
+        const submitFlow = async () => {
+            // ── Step 1: Upload Files to Cloud Storage ──────────────
+            let mediaItems: Array<{ file_url: string; file_type: 'IMAGE'; is_primary: boolean; display_order: number }> = [];
+
+            if (imagePreviews.length > 0) {
+                const { uploadService } = await import("@/services/upload");
+                const files = imagePreviews.map(p => p.file);
+
+                try {
+                    const urls = await uploadService.uploadFiles(files, 'equipment');
+
+                    // Build media_items array with URLs and metadata
+                    mediaItems = urls.map((url, index) => ({
+                        file_url: url,
+                        file_type: 'IMAGE' as const,
+                        is_primary: index === data.primaryImageIndex,
+                        display_order: index,
+                    }));
+                } catch (uploadError) {
+                    console.error("File upload failed:", uploadError);
+                    throw new Error("Failed to upload images. Please try again.");
+                }
+            }
+
+            // ── Step 2: Create Equipment with Media URLs ───────────
+            const payload = {
+                name: data.name,
+                brand: data.brand,
+                model: data.model,
+                category: data.category,
+                subcategory: "GENERAL",
+                manufacturing_year: Number(data.year),
+                fuel_type: "DIESEL" as const,
+                condition: (data.condition || "GOOD") as "NEW" | "USED" | "REFURBISHED",
+                price_daily: Number(data.dailyRate),
+                price_monthly: Number(data.monthlyRate || 0),
+                specifications: data.specifications || {},
+                address_id: defaultAddressId || 1,
+                with_operator: data.isOperatorIncluded,
+                operator_cost: Number(data.operatorCost || 0),
+                media_items: mediaItems, // Include uploaded file URLs
+                sector_ids: [1], // Default to Construction sector
+            }
+
+            // Create equipment with media in a single request
+            const response = await equipmentService.create(payload)
+
+            return response
         }
+
+        toast.promise(submitFlow(), {
+            loading: t("wizard.submitting"),
+            success: () => {
+                router.push("/dashboard/fleet")
+                return t("wizard.submitSuccess")
+            },
+            error: (err: Error) => {
+                console.error("Equipment submission failed:", err)
+                return err.message || t("wizard.submitError")
+            },
+            finally: () => {
+                setIsSubmitting(false)
+            },
+        })
     }
 
     // --- Animation Variants ---
@@ -400,7 +475,7 @@ export function AddEquipmentWizard() {
                                                             <Badge key={key} variant="secondary" className="px-3 py-1 gap-2 text-sm">
                                                                 <span className="font-semibold">{key}:</span> {String(value)}
                                                                 <div
-                                                                    className="cursor-pointer hover:text-red-500 ml-1"
+                                                                    className="cursor-pointer hover:text-red-500 ms-1"
                                                                     onClick={() => {
                                                                         const specs = { ...watch("specifications") }
                                                                         delete specs[key]
@@ -426,8 +501,8 @@ export function AddEquipmentWizard() {
                                                         <FormLabel>{t("fields.dailyPrice")}</FormLabel>
                                                         <FormControl>
                                                             <div className="relative">
-                                                                <Input type="number" {...field} className="pl-12" />
-                                                                <span className="absolute left-3 top-2.5 text-gray-500 font-bold text-sm">SAR</span>
+                                                                <Input type="number" {...field} className="ps-12" />
+                                                                <span className="absolute start-3 top-2.5 text-gray-500 font-bold text-sm">SAR</span>
                                                             </div>
                                                         </FormControl>
                                                         <FormMessage />
@@ -439,8 +514,8 @@ export function AddEquipmentWizard() {
                                                         <FormLabel>{t("fields.monthlyPrice")}</FormLabel>
                                                         <FormControl>
                                                             <div className="relative">
-                                                                <Input type="number" {...field} className="pl-12" />
-                                                                <span className="absolute left-3 top-2.5 text-gray-500 font-bold text-sm">SAR</span>
+                                                                <Input type="number" {...field} className="ps-12" />
+                                                                <span className="absolute start-3 top-2.5 text-gray-500 font-bold text-sm">SAR</span>
                                                             </div>
                                                         </FormControl>
                                                         <FormMessage />
@@ -450,7 +525,7 @@ export function AddEquipmentWizard() {
 
                                             <div className="p-4 bg-gray-50 rounded-xl border border-gray-100 dark:bg-gray-800/50">
                                                 <FormField control={control} name="isOperatorIncluded" render={({ field }) => (
-                                                    <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                                                    <FormItem className="flex flex-row items-start gap-3 space-y-0">
                                                         <FormControl>
                                                             <Checkbox
                                                                 checked={field.value}
@@ -538,7 +613,7 @@ export function AddEquipmentWizard() {
                                                                     className={watch("primaryImageIndex") === index ? "bg-matin-primary text-white" : "bg-white/90"}
                                                                     onClick={() => setValue("primaryImageIndex", index)}
                                                                 >
-                                                                    {watch("primaryImageIndex") === index ? <Check size={14} className="mr-1" /> : null}
+                                                                    {watch("primaryImageIndex") === index ? <Check size={14} className="me-1" /> : null}
                                                                     {t("upload.primary")}
                                                                 </Button>
                                                                 <Button
@@ -554,7 +629,7 @@ export function AddEquipmentWizard() {
 
                                                             {/* Primary Badge */}
                                                             {watch("primaryImageIndex") === index && (
-                                                                <div className="absolute top-2 left-2 bg-matin-primary text-white text-[10px] px-2 py-1 rounded-full font-bold shadow-sm">
+                                                                <div className="absolute top-2 start-2 bg-matin-primary text-white text-[10px] px-2 py-1 rounded-full font-bold shadow-sm">
                                                                     Primary
                                                                 </div>
                                                             )}
@@ -577,7 +652,7 @@ export function AddEquipmentWizard() {
                                 disabled={currentStep === 1}
                                 className="w-32"
                             >
-                                <ChevronLeft className="mr-2 h-4 w-4" /> {t("wizard.prev")}
+                                <ChevronLeft className="me-2 h-4 w-4 rtl:rotate-180" /> {t("wizard.prev")}
                             </Button>
 
                             {currentStep < STEPS.length ? (
@@ -586,15 +661,24 @@ export function AddEquipmentWizard() {
                                     onClick={nextStep}
                                     className="w-32 bg-matin-primary hover:bg-matin-primary/90"
                                 >
-                                    {t("wizard.next")} <ChevronRight className="ml-2 h-4 w-4" />
+                                    {t("wizard.next")} <ChevronRight className="ms-2 h-4 w-4 rtl:rotate-180" />
                                 </Button>
                             ) : (
                                 <Button
                                     type="submit"
                                     className="w-40 bg-green-600 hover:bg-green-700 text-white"
-                                    disabled={imagePreviews.length === 0}
+                                    disabled={imagePreviews.length === 0 || isSubmitting}
                                 >
-                                    {t("wizard.submit")} <Check className="ml-2 h-4 w-4" />
+                                    {isSubmitting ? (
+                                        <>
+                                            <Loader2 className="me-2 h-4 w-4 animate-spin" />
+                                            {t("wizard.submitting")}
+                                        </>
+                                    ) : (
+                                        <>
+                                            {t("wizard.submit")} <Check className="ms-2 h-4 w-4" />
+                                        </>
+                                    )}
                                 </Button>
                             )}
                         </div>

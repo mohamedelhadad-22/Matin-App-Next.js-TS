@@ -12,6 +12,7 @@
 
   /* 2. define fonts */
   --font-ibm: var(--font-ibm);
+  --font-cairo: var(--font-cairo);
   --font-sans: var(--font-ibm), ui-sans-serif, system-ui;
 
   /* 3. define shadcn colors */

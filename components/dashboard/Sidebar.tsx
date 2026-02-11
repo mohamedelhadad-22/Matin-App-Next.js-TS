@@ -10,19 +10,33 @@ import {
     LogOut
 } from 'lucide-react';
 import { useSidebar } from '@/components/dashboard/sidebar-context';
-import { useAuth } from '@/components/providers/auth-provider'; // get the user data
-import { cn } from '@/lib/utils'; // to improve merging classes
+import { useAuth } from '@/components/providers/auth-provider';
+import { cn } from '@/lib/utils';
+
+/** Generate initials from a full name or email */
+function getInitials(fullName?: string, email?: string): string {
+    if (fullName && fullName.trim()) {
+        const parts = fullName.trim().split(/\s+/);
+        if (parts.length >= 2) {
+            return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+        }
+        return parts[0][0].toUpperCase();
+    }
+    // Fallback to email first char
+    if (email) return email[0].toUpperCase();
+    return '?';
+}
 
 export default function Sidebar() {
-    const t = useTranslations('dashboard.sidebar'); // make sure the translation file is named Sidebar
+    const t = useTranslations('dashboard.sidebar');
     const pathname = usePathname();
     const router = useRouter();
     const locale = useLocale();
 
     const { isCollapsed, toggleSidebar } = useSidebar();
-    const { user, logout } = useAuth(); // get the real user
+    const { user, logout } = useAuth();
 
-    // get the list based on the user
+    // get the list based on the user (filtered by entity_type)
     const routes = getNavItems(user);
 
     const isActive = (path: string) => pathname === path;
@@ -32,8 +46,15 @@ export default function Sidebar() {
         router.replace(pathname, { locale: nextLocale });
     };
 
-    // if no user (still loading), return null or simple skeleton
+    // if no user (still loading), return null
     if (!user) return null;
+
+    // Display name with fallback
+    const displayName = user.full_name?.trim() || user.email;
+    const initials = getInitials(user.full_name, user.email);
+
+    // Entity type label (translated)
+    const entityLabel = user.entity_type === 'COMPANY' ? t('entity_company') : t('entity_individual');
 
     return (
         <aside
@@ -47,11 +68,15 @@ export default function Sidebar() {
                 onClick={toggleSidebar}
                 className={cn(
                     "absolute top-9 bg-matin-action text-white p-1 rounded-full shadow-lg hover:bg-orange-600 transition z-50",
-                    "ltr:-right-3 rtl:-left-3 rtl:rotate-180"
+                    "ltr:-right-3 rtl:-left-3"
                 )}
                 aria-label="Toggle Sidebar"
             >
-                {isCollapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
+                {/* In RTL the chevron should flip direction */}
+                {isCollapsed
+                    ? <ChevronRight size={16} className="rtl:rotate-180" />
+                    : <ChevronLeft size={16} className="rtl:rotate-180" />
+                }
             </button>
 
             {/* Brand Section */}
@@ -77,7 +102,7 @@ export default function Sidebar() {
                             </span>
                         </h1>
                         <p className="text-[10px] text-matin-secondary opacity-80 mt-1">
-                            Heavy Equipment Rental
+                            {locale === 'ar' ? 'تأجير المعدات الثقيلة' : 'Heavy Equipment Rental'}
                         </p>
                     </div>
                 )}
@@ -90,11 +115,10 @@ export default function Sidebar() {
                         key={route.href}
                         href={route.href}
                         icon={<route.icon size={20} />}
-                        // use t() to translate the title key from the config
                         text={t(route.title)}
                         active={isActive(route.href)}
                         collapsed={isCollapsed}
-                        color={route.color} // pass the custom color for the icon
+                        color={route.color}
                     />
                 ))}
             </nav>
@@ -123,14 +147,15 @@ export default function Sidebar() {
                     "w-full flex items-center gap-3 p-3 rounded-lg bg-black/20",
                     isCollapsed ? 'justify-center p-2' : ''
                 )}>
+                    {/* Dynamic Avatar with Initials */}
                     <div className="w-8 h-8 rounded-full bg-matin-action flex items-center justify-center text-white font-bold shrink-0 text-sm">
-                        {user.full_name?.charAt(0).toUpperCase()}
+                        {initials}
                     </div>
 
                     {!isCollapsed && (
                         <div className="flex-1 overflow-hidden">
-                            <p className="text-sm font-bold truncate text-white">{user.full_name}</p>
-                            <p className="text-[10px] text-gray-400 truncate">{user.email}</p>
+                            <p className="text-sm font-bold truncate text-white">{displayName}</p>
+                            <p className="text-[10px] text-gray-400 truncate">{entityLabel}</p>
                         </div>
                     )}
 
@@ -153,26 +178,25 @@ function SidebarItem({ href, icon, text, active, collapsed, color }: any) {
             href={href}
             className={cn(
                 "flex items-center gap-3 p-3 rounded-lg transition-all duration-300 group relative",
-                // Active State Styling
                 active
                     ? 'bg-white/20 text-white font-bold shadow-sm'
                     : 'text-matin-secondary hover:bg-white/10 hover:text-white',
                 collapsed ? 'justify-center' : ''
             )}
         >
-            {/* Icon: use custom color if not active, and white if active */}
+            {/* Icon */}
             <span className={cn("shrink-0 transition-colors", !active && color ? color : "")}>
                 {icon}
             </span>
 
-            {/* Text appears and disappears with a smooth effect */}
+            {/* Text */}
             {!collapsed && (
                 <span className="whitespace-nowrap overflow-hidden animate-fade-in text-sm">
                     {text}
                 </span>
             )}
 
-            {/* Tooltip when user hover on icon when sidebar is collapsed */}
+            {/* Tooltip for collapsed sidebar */}
             {collapsed && (
                 <div className={cn(
                     "absolute bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap z-50 pointer-events-none shadow-md",

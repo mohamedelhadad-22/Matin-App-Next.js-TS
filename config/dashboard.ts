@@ -8,15 +8,19 @@ import {
     HardHat,
     Users,
     Building2,
-    Gavel
+    Gavel,
+    PlusCircle
 } from "lucide-react"
 import { User } from "@/types/auth"
+
 // Define the shape of a navigation item
 export type NavItem = {
     title: string
     href: string
     icon: any
     color?: string
+    /** If set, this item is only visible for specific entity types */
+    visibleFor?: ('COMPANY' | 'INDIVIDUAL')[]
 }
 
 // The "Smart" Configuration Object
@@ -25,7 +29,8 @@ export const dashboardConfig = {
     vendor: [
         { title: "overview", href: "/dashboard", icon: LayoutDashboard, color: "text-sky-500" },
         { title: "fleet", href: "/dashboard/fleet", icon: Truck, color: "text-violet-500" },
-        { title: "vendorOrders", href: "/dashboard/vendor-orders", icon: FileText, color: "text-pink-700" },
+        { title: "addEquipment", href: "/dashboard/fleet/add", icon: PlusCircle, color: "text-emerald-500", visibleFor: ['COMPANY'] as ('COMPANY' | 'INDIVIDUAL')[] },
+        { title: "orders", href: "/dashboard/orders", icon: FileText, color: "text-pink-700" },
         { title: "wallet", href: "/dashboard/wallet", icon: Wallet, color: "text-orange-700" },
         { title: "team", href: "/dashboard/company/team", icon: Users, color: "text-blue-600" },
         { title: "trust_center", href: "/dashboard/company/trust", icon: Gavel, color: "text-yellow-600" },
@@ -52,16 +57,24 @@ export const dashboardConfig = {
 export function getNavItems(user: User | null): NavItem[] {
     if (!user) return []
 
+    let items: NavItem[] = []
+
     // 1. لو أدمن -> رجع قائمة الأدمن
     if (user.role === 'ADMIN') {
-        return dashboardConfig.admin
+        items = dashboardConfig.admin
     }
-
     // 2. لو شركة -> رجع قائمة الفيندور
-    if (user.entity_type === 'COMPANY') {
-        return dashboardConfig.vendor
+    else if (user.entity_type === 'COMPANY') {
+        items = dashboardConfig.vendor
+    }
+    // 3. غير كدة (فرد) -> رجع قائمة التينانت
+    else {
+        items = dashboardConfig.tenant
     }
 
-    // 3. غير كدة (فرد) -> رجع قائمة التينانت
-    return dashboardConfig.tenant
+    // Filter by visibleFor if set
+    return items.filter(item => {
+        if (!item.visibleFor) return true
+        return item.visibleFor.includes(user.entity_type)
+    })
 }
