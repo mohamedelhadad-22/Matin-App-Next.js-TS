@@ -1,22 +1,35 @@
 "use client"
 
-import { useTranslations } from "next-intl"
+import { useAuth } from "@/components/providers/auth-provider"
+import { CompanyDashboard } from "@/components/dashboard/company/company-overview"
+import { IndividualDashboard } from "@/components/dashboard/individual/individual-overview"
+import { WelcomeHeader } from "@/components/dashboard/shared/welcome-header"
+import { Loader2 } from "lucide-react"
 
 export default function DashboardPage() {
-    const t = useTranslations("dashboard.sidebar") // هنجيب النصوص عشان نجرب
+    const { user, isLoading } = useAuth()
+
+    if (isLoading) {
+        return (
+            <div className="flex h-screen w-full items-center justify-center">
+                <Loader2 className="h-8 w-8 animate-spin text-matin-primary" />
+            </div>
+        )
+    }
+
+    // Determine dashboard type based on user entity_type or role
+    // 'COMPANY' entities or 'SUPPLIER' roles get the Company Dashboard
+    const isCompany = user?.entity_type === 'COMPANY' || user?.role === 'SUPPLIER'
 
     return (
-        <div className="space-y-4">
-            <h2 className="text-3xl font-bold tracking-tight">{t("overview")}</h2>
+        <div className="p-4 md:p-8 max-w-7xl mx-auto space-y-8">
+            <WelcomeHeader />
 
-            {/* Temporary Placeholder Content */}
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                {/* هنسيب المكان ده للكروت (KPIs) اللي اتفقنا عليها في الخطة */}
-                <div className="p-6 bg-white rounded-xl shadow-sm border">
-                    <div className="text-sm font-medium text-muted-foreground">إجمالي الدخل</div>
-                    <div className="text-2xl font-bold mt-2">SAR 45,231.89</div>
-                </div>
-            </div>
+            {isCompany ? (
+                <CompanyDashboard />
+            ) : (
+                <IndividualDashboard />
+            )}
         </div>
     )
 }

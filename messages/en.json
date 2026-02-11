@@ -52,7 +52,15 @@
             "confirmPasswordRequired": "Confirm password is required",
             "passwordMismatch": "Passwords do not match",
             "companyNameRequired": "Company name is required",
-            "crNumberRequired": "CR number is required ({min} digits)"
+            "crNumberRequired": "CR number is required ({min} digits)",
+            "equipmentNameMin": "Equipment name must be at least {min} characters",
+            "brandRequired": "Brand is required",
+            "modelRequired": "Model is required",
+            "yearInvalid": "Please enter a valid year",
+            "categoryRequired": "Category is required",
+            "dailyPriceRequired": "Daily rental price is required",
+            "cityRequired": "City/Location is required",
+            "imageRequired": "At least one image is required"
         }
     },
     "dashboard": {
@@ -75,10 +83,100 @@
             "disputes": "Disputes",
             "platform_settings": "Platform Settings"
         },
+        "overview": {
+            "welcome": "Welcome back, {name}",
+            "subtitle": "Here's what's happening with your projects today.",
+            "company": {
+                "stats": {
+                    "title": "Financial Pulse",
+                    "revenue": "Total Revenue",
+                    "outstanding": "Outstanding Invoices",
+                    "creditLimit": "Credit Limit Used"
+                },
+                "fleet": {
+                    "title": "Fleet Status",
+                    "available": "Available",
+                    "rented": "Rented",
+                    "maintenance": "Maintenance"
+                },
+                "rfq": {
+                    "title": "RFQ Inbox",
+                    "approve": "Approve Quote",
+                    "reject": "Reject",
+                    "pending": "Pending Review",
+                    "viewAll": "View All Requests"
+                },
+                "trust": {
+                    "title": "Trust & Verification",
+                    "score": "Trust Score",
+                    "tier": "{tier} Tier",
+                    "completeVerification": "Complete Verification",
+                    "verified": "Verified Supplier"
+                },
+                "team": {
+                    "title": "Team Quick Access",
+                    "addMember": "Add Member"
+                }
+            },
+            "individual": {
+                "activeRentals": {
+                    "title": "Active Rentals",
+                    "timeRemaining": "{days} days remaining",
+                    "return": "Return Equipment"
+                },
+                "orders": {
+                    "title": "Recent Orders",
+                    "track": "Track Order"
+                },
+                "spending": {
+                    "title": "Monthly Spending",
+                    "total": "Total Spent"
+                },
+                "quickOrder": {
+                    "title": "Quick Re-order"
+                }
+            }
+        },
         "equipment": {
             "title": "Equipment List",
             "subtitle": "Manage your fleet and track status",
-            "addButton": "Add Equipment"
+            "addButton": "Add Equipment",
+            "wizard": {
+                "title": "Add New Equipment",
+                "subtitle": "Fill in the details to list your machine.",
+                "step1": "Basic Details",
+                "step2": "Specifications",
+                "step3": "Pricing & Location",
+                "step4": "Media Upload",
+                "next": "Next Step",
+                "prev": "Previous",
+                "submit": "Submit Listing",
+                "cancel": "Cancel"
+            },
+            "fields": {
+                "name": "Equipment Name",
+                "brand": "Brand / Manufacturer",
+                "model": "Model Number",
+                "year": "Manufacturing Year",
+                "category": "Category",
+                "condition": "Condition",
+                "dailyPrice": "Daily Rate (SAR)",
+                "monthlyPrice": "Monthly Rate (SAR)",
+                "operator": "Operator Included?",
+                "operatorCost": "Operator Daily Cost (SAR)",
+                "city": "City / Location",
+                "address": "Full Address",
+                "specs": "Technical Specifications",
+                "addSpec": "Add Custom Spec",
+                "key": "Feature Name",
+                "value": "Value"
+            },
+            "upload": {
+                "dragDrop": "Drag & drop images here, or click to select",
+                "primary": "Primary",
+                "remove": "Remove",
+                "maxSize": "Max 5MB per image"
+            }
         }
     },
     "DashboardHeader": {

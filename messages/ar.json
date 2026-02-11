@@ -52,7 +52,15 @@
             "confirmPasswordRequired": "تأكيد كلمة المرور مطلوب",
             "passwordMismatch": "كلمات المرور غير متطابقة",
             "companyNameRequired": "اسم الشركة مطلوب",
-            "crNumberRequired": "رقم السجل التجاري مطلوب ({min} أرقام)"
+            "crNumberRequired": "رقم السجل التجاري مطلوب ({min} أرقام)",
+            "equipmentNameMin": "اسم المعدة مطلوب ({min} أحرف على الأقل)",
+            "brandRequired": "العلامة التجارية مطلوبة",
+            "modelRequired": "موديل المعدة مطلوب",
+            "yearInvalid": "سنة الصنع غير صحيحة",
+            "categoryRequired": "يرجى اختيار الفئة",
+            "dailyPriceRequired": "سعر الإيجار اليومي مطلوب",
+            "cityRequired": "اختر المدينة",
+            "imageRequired": "يجب رفع صورة واحدة على الأقل"
         }
     },
     "dashboard": {
@@ -75,10 +83,100 @@
             "disputes": "النزاعات",
             "platform_settings": "إعدادات المنصة"
         },
+        "overview": {
+            "welcome": "مرحباً بعودتك، {name}",
+            "subtitle": "إليك نظرة سريعة على ما يحدث في مشاريعك اليوم.",
+            "company": {
+                "stats": {
+                    "title": "النبض المالي",
+                    "revenue": "إجمالي الإيرادات",
+                    "outstanding": "الفواتير المستحقة",
+                    "creditLimit": "الحد الائتماني المستخدم"
+                },
+                "fleet": {
+                    "title": "حالة الأسطول",
+                    "available": "متاح",
+                    "rented": "مؤجر",
+                    "maintenance": "في الصيانة"
+                },
+                "rfq": {
+                    "title": "صندوق الوارد (RFQ)",
+                    "approve": "الموافقة",
+                    "reject": "رفض",
+                    "pending": "قيد المراجعة",
+                    "viewAll": "عرض كل الطلبات"
+                },
+                "trust": {
+                    "title": "الثقة والتحقق",
+                    "score": "نقاط الثقة",
+                    "tier": "شريحة {tier}",
+                    "completeVerification": "إكمال التحقق",
+                    "verified": "مورد موثوق"
+                },
+                "team": {
+                    "title": "الوصول السريع للفريق",
+                    "addMember": "إضافة عضو"
+                }
+            },
+            "individual": {
+                "activeRentals": {
+                    "title": "المعدات المؤجرة حالياً",
+                    "timeRemaining": "متبقي {days} أيام",
+                    "return": "إرجاع المعدة"
+                },
+                "orders": {
+                    "title": "أحدث الطلبات",
+                    "track": "تتبع الطلب"
+                },
+                "spending": {
+                    "title": "الإنفاق الشهري",
+                    "total": "الإجمالي المنفق"
+                },
+                "quickOrder": {
+                    "title": "إعادة الطلب السريع"
+                }
+            }
+        },
         "equipment": {
             "title": "قائمة المعدات",
             "subtitle": "إدارة أسطولك وتتبع الحالة",
-            "addButton": "إضافة معدة"
+            "addButton": "إضافة معدة",
+            "wizard": {
+                "title": "إضافة معدة جديدة",
+                "subtitle": "أكمل البيانات التالية لإضافة المعدة إلى المنصة.",
+                "step1": "البيانات الأساسية",
+                "step2": "المواصفات الفنية",
+                "step3": "السعر والموقع",
+                "step4": "صور المعدة",
+                "next": "التالي",
+                "prev": "السابق",
+                "submit": "نشر المعدة",
+                "cancel": "إلغاء"
+            },
+            "fields": {
+                "name": "اسم المعدة",
+                "brand": "العلامة التجارية",
+                "model": "رقم الموديل",
+                "year": "سنة الصنع",
+                "category": "الفئة",
+                "condition": "الحالة",
+                "dailyPrice": "سعر اليوم (ر.س)",
+                "monthlyPrice": "سعر الشهر (ر.س)",
+                "operator": "شامل السائق؟",
+                "operatorCost": "تكلفة السائق (يومياً)",
+                "city": "المدينة",
+                "address": "العنوان بالتفصيل",
+                "specs": "المواصفات الفنية",
+                "addSpec": "إضافة مواصفة خاصة",
+                "key": "اسم الخاصية",
+                "value": "القيمة"
+            },
+            "upload": {
+                "dragDrop": "اسحب الصور هنا، أو اضغط للاختيار",
+                "primary": "الرئيسية",
+                "remove": "حذف",
+                "maxSize": "بحد أقصى 5 ميجابايت للصورة"
+            }
         }
     },
     "DashboardHeader": {
