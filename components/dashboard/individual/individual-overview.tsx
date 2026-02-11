@@ -11,7 +11,8 @@ import {
     ShoppingBag,
     Plus
 } from "lucide-react"
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from "recharts"
+import { BarChart, Bar, XAxis } from "recharts"
+import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
 import { Card } from "@/components/ui/card"
@@ -44,6 +45,13 @@ const favorites = [
     { id: 2, name: "CAT 140K", type: "Motor Grader" },
     { id: 3, name: "Dynapac CA250", type: "Roller" },
 ]
+
+const spendingChartConfig = {
+    amount: {
+        label: "Amount (SAR)",
+        color: "#EAB308",
+    },
+} satisfies ChartConfig
 
 export function IndividualDashboard() {
     const t = useTranslations("dashboard.overview.individual")
@@ -106,14 +114,14 @@ export function IndividualDashboard() {
 
                     <div className="space-y-6">
                         {recentOrders.map((order, index) => (
-                            <div key={order.id} className="relative pl-8 last:pb-0">
+                            <div key={order.id} className="relative ps-8 last:pb-0">
                                 {/* Timeline Line */}
                                 {index !== recentOrders.length - 1 && (
-                                    <div className="absolute left-[11px] top-8 bottom-0 w-0.5 bg-gray-100" />
+                                    <div className="absolute start-[11px] top-8 bottom-0 w-0.5 bg-gray-100" />
                                 )}
 
                                 {/* Status Icon */}
-                                <div className={`absolute left-0 top-1 w-6 h-6 rounded-full flex items-center justify-center z-10 ${order.status === 'Delivered' ? 'bg-green-100 text-green-600' : 'bg-blue-100 text-blue-600'}`}>
+                                <div className={`absolute start-0 top-1 w-6 h-6 rounded-full flex items-center justify-center z-10 ${order.status === 'Delivered' ? 'bg-green-100 text-green-600' : 'bg-blue-100 text-blue-600'}`}>
                                     {order.status === 'Delivered' ? <CheckCircle2 size={14} /> : <div className="w-2 h-2 rounded-full bg-current animate-pulse" />}
                                 </div>
 
@@ -156,16 +164,27 @@ export function IndividualDashboard() {
                             <p className="text-xs text-gray-400">{t("spending.total")}</p>
                         </div>
                         <div className="h-40 w-full">
-                            <ResponsiveContainer width="100%" height="100%">
-                                <BarChart data={spendingData}>
-                                    <XAxis dataKey="month" stroke="#6b7280" fontSize={10} tickLine={false} axisLine={false} />
-                                    <Tooltip
-                                        cursor={{ fill: 'rgba(255,255,255,0.1)' }}
-                                        contentStyle={{ backgroundColor: '#1f2937', border: 'none', borderRadius: '8px', fontSize: '12px' }}
+                            <ChartContainer config={spendingChartConfig} className="min-h-[150px] w-full">
+                                <BarChart accessibilityLayer data={spendingData}>
+                                    <XAxis
+                                        dataKey="month"
+                                        tickLine={false}
+                                        tickMargin={10}
+                                        axisLine={false}
+                                        tickFormatter={(value: string) => value.slice(0, 3)}
+                                        tick={{ fill: "#9ca3af", fontSize: 12 }}
                                     />
-                                    <Bar dataKey="amount" fill="#EAB308" radius={[4, 4, 0, 0]} />
+                                    <ChartTooltip
+                                        cursor={false}
+                                        content={<ChartTooltipContent hideLabel />}
+                                    />
+                                    <Bar
+                                        dataKey="amount"
+                                        fill="var(--color-amount)"
+                                        radius={[4, 4, 0, 0]}
+                                    />
                                 </BarChart>
-                            </ResponsiveContainer>
+                            </ChartContainer>
                         </div>
                     </Card>
 

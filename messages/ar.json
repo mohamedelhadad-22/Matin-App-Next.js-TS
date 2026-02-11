@@ -67,6 +67,7 @@
         "sidebar": {
             "overview": "نظرة عامة",
             "fleet": "إدارة الأسطول",
+            "addEquipment": "إضافة معدة",
             "vendorOrders": "طلبات التأجير",
             "wallet": "المحفظة",
             "team": "فريق العمل",
@@ -77,11 +78,21 @@
             "role_vendor": "مورد",
             "role_tenant": "مستأجر",
             "role_admin": "مسؤول",
+            "entity_company": "شركة",
+            "entity_individual": "فرد",
             "settings": "الإعدادات",
             "users_management": "إدارة المستخدمين",
             "companies": "إدارة الشركات",
             "disputes": "النزاعات",
             "platform_settings": "إعدادات المنصة"
+        },
+        "verification": {
+            "pending_title": "الحساب قيد المراجعة.",
+            "pending_desc": "يرجى استكمال الملف التعريفي ورفع المستندات القانونية لتفعيل كافة المميزات.",
+            "rejected_title": "فشل التحقق من الحساب.",
+            "rejected_desc": "تم رفض طلب التحقق الخاص بك. يرجى مراجعة البيانات وإعادة التقديم.",
+            "complete_profile": "استكمال البيانات",
+            "resubmit": "إعادة التقديم"
         },
         "overview": {
             "welcome": "مرحباً بعودتك، {name}",
@@ -179,11 +190,83 @@
             }
         }
     },
+    "admin": {
+        "users": {
+            "title": "إدارة المستخدمين",
+            "details": {
+                "title": "تفاصيل المستخدم والتحقق",
+                "basicInfo": "البيانات الأساسية",
+                "companyInfo": "بيانات المنشأة",
+                "documents": "المستندات القانونية",
+                "stats": "إحصائيات الأداء",
+                "joinedDate": "تاريخ الانضمام",
+                "email": "البريد الإلكتروني",
+                "phone": "رقم الجوال",
+                "address": "العنوان",
+                "entityType": "نوع الكيان",
+                "crNumber": "رقم السجل التجاري",
+                "vatNumber": "الرقم الضريبي",
+                "totalOrders": "إجمالي الطلبات",
+                "totalRevenue": "إجمالي الإيرادات",
+                "rating": "التقييم",
+                "noDocuments": "لا توجد مستندات مرفوعة",
+                "viewDocument": "عرض المستند",
+                "download": "تحميل",
+                "approve": "قبول التوثيق",
+                "reject": "رفض التوثيق",
+                "ban": "حظر المستخدم",
+                "rejectReasonTitle": "سبب الرفض",
+                "rejectReasonDesc": "يرجى ذكر سبب الرفض لهذا المستخدم.",
+                "rejectReasonPlaceholder": "السبب...",
+                "cancel": "إلغاء",
+                "confirmReject": "تأكيد الرفض",
+                "imagePreview": "معاينة المستند",
+                "verificationApproved": "تم توثيق المستخدم بنجاح",
+                "verificationRejected": "تم رفض توثيق المستخدم",
+                "userBanned": "تم حظر المستخدم"
+            }
+        },
+        "disputes": {
+            "title": "إدارة النزاعات",
+            "subtitle": "معالجة الخلافات بين المستأجرين والموردين",
+            "table": {
+                "id": "رقم النزاع",
+                "orderId": "رقم الطلب",
+                "complainant": "صاحب الشكوى",
+                "respondent": "المدعى عليه",
+                "status": "الحالة",
+                "date": "تاريخ الإنشاء",
+                "actions": "الإجراءات"
+            },
+            "status": {
+                "OPEN": "مفتوح",
+                "RESOLVED": "تم الحل",
+                "ESCALATED": "تم التصعيد"
+            },
+            "actions": {
+                "resolve": "حل النزاع",
+                "viewDetails": "عرض التفاصيل"
+            },
+            "resolveDialog": {
+                "title": "حل النزاع",
+                "desc": "اختر القرار المناسب لإغلاق هذا النزاع.",
+                "decision": "القرار",
+                "refundTenant": "استرداد كامل للمستأجر",
+                "releaseVendor": "تحويل الأموال للمورد",
+                "partialRefund": "استرداد جزئي",
+                "submit": "إرسال القرار",
+                "success": "تم حل النزاع بنجاح"
+            }
+        }
+    },
     "DashboardHeader": {
         "searchPlaceholder": "ابحث عن معدات، طلبات، عملاء...",
         "userName": "المستخدم",
         "userRole": "مدير النظام",
+        "role_vendor": "مورد",
+        "role_tenant": "مستأجر",
         "profile": "الملف الشخصي",
+        "companyProfile": "ملف الشركة",
         "settings": "الإعدادات",
         "logout": "تسجيل الخروج"
     },

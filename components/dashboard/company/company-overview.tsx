@@ -13,7 +13,8 @@ import {
     Plus,
     ArrowRight
 } from "lucide-react"
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts"
+import { PieChart, Pie, Cell } from "recharts"
+import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
 import { Badge } from "@/components/ui/badge"
@@ -43,6 +44,21 @@ const teamMembers = [
     { id: 2, name: "Sara Smith", role: "Sales", image: "https://i.pravatar.cc/150?u=2" },
     { id: 3, name: "Khaled Omar", role: "Engineer", image: "https://i.pravatar.cc/150?u=3" },
 ]
+
+const fleetChartConfig = {
+    Available: {
+        label: "Available",
+        color: "#10b981",
+    },
+    Rented: {
+        label: "Rented",
+        color: "#3b82f6",
+    },
+    Maintenance: {
+        label: "Maintenance",
+        color: "#f59e0b",
+    },
+} satisfies ChartConfig
 
 export function CompanyDashboard() {
     const t = useTranslations("dashboard.overview.company")
@@ -109,24 +125,26 @@ export function CompanyDashboard() {
                     </div>
 
                     <div className="h-48 w-full relative flex items-center justify-center">
-                        <ResponsiveContainer width="100%" height="100%">
+                        <ChartContainer config={fleetChartConfig} className="h-full w-full aspect-auto">
                             <PieChart>
+                                <ChartTooltip
+                                    cursor={false}
+                                    content={<ChartTooltipContent hideLabel />}
+                                />
                                 <Pie
                                     data={fleetData}
-                                    cx="50%"
-                                    cy="50%"
+                                    dataKey="value"
+                                    nameKey="name"
                                     innerRadius={50}
                                     outerRadius={70}
                                     paddingAngle={5}
-                                    dataKey="value"
                                 >
                                     {fleetData.map((entry, index) => (
                                         <Cell key={`cell-${index}`} fill={entry.color} strokeWidth={0} />
                                     ))}
                                 </Pie>
-                                <Tooltip />
                             </PieChart>
-                        </ResponsiveContainer>
+                        </ChartContainer>
                         {/* Center Text */}
                         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
                             <span className="text-2xl font-bold text-gray-900">23</span>

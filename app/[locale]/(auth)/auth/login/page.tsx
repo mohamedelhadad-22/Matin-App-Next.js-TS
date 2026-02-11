@@ -76,9 +76,15 @@ export default function LoginPage({ params }: { params: Promise<{ locale: string
             const user = {
                 id: response.user_id,
                 full_name: response.full_name,
-                email: response.username,
+                username: response.username,
+                email: response.username, // Assuming username is email
+                phone: "", // Not returned in login response
+                is_active: true, // Assuming active if login successful
+                is_verified: response.is_verified,
                 role: response.user_role,
                 entity_type: response.entity_type,
+                plan_type: response.plan_type,
+                verification_status: response.verification_status,
             }
 
             login(response.access_token, user)

@@ -67,6 +67,7 @@
         "sidebar": {
             "overview": "Overview",
             "fleet": "Fleet Management",
+            "addEquipment": "Add Equipment",
             "vendorOrders": "Orders Received",
             "wallet": "Wallet",
             "projects": "My Projects",
@@ -75,6 +76,8 @@
             "role_vendor": "Vendor",
             "role_tenant": "Tenant",
             "role_admin": "Admin",
+            "entity_company": "Company",
+            "entity_individual": "Individual",
             "settings": "Settings",
             "team": "Team",
             "trust_center": "Trust Center",
@@ -82,6 +85,14 @@
             "companies": "Company Management",
             "disputes": "Disputes",
             "platform_settings": "Platform Settings"
+        },
+        "verification": {
+            "pending_title": "Account Under Review.",
+            "pending_desc": "Please complete your profile and upload legal documents to unlock all features.",
+            "rejected_title": "Verification Failed.",
+            "rejected_desc": "Your verification request has been rejected. Please review your details and resubmit.",
+            "complete_profile": "Complete Profile",
+            "resubmit": "Re-submit"
         },
         "overview": {
             "welcome": "Welcome back, {name}",
@@ -169,8 +180,23 @@
                 "specs": "Technical Specifications",
                 "addSpec": "Add Custom Spec",
                 "key": "Feature Name",
-                "value": "Value"
+                "value": "Value",
+                "status": "Status",
+                "image": "Image",
+                "actions": "Actions"
             },
+            "actions": {
+                "edit": "Edit",
+                "delete": "Delete",
+                "view": "View Details",
+                "deleteTitle": "Delete Equipment",
+                "deleteDesc": "Are you sure you want to delete this equipment? This action cannot be undone.",
+                "cancel": "Cancel",
+                "confirm": "Delete",
+                "deleteSuccess": "Equipment deleted successfully",
+                "deleteFailed": "Failed to delete equipment"
+            },
+            "failedToLoad": "Failed to load equipment list",
             "upload": {
                 "dragDrop": "Drag & drop images here, or click to select",
                 "primary": "Primary",
@@ -179,11 +205,83 @@
             }
         }
     },
+    "admin": {
+        "users": {
+            "title": "User Management",
+            "details": {
+                "title": "User Details & Verification",
+                "basicInfo": "Basic Information",
+                "companyInfo": "Company Information",
+                "documents": "Legal Documents",
+                "stats": "Performance Stats",
+                "joinedDate": "Joined Date",
+                "email": "Email",
+                "phone": "Phone",
+                "address": "Address",
+                "entityType": "Entity Type",
+                "crNumber": "CR Number",
+                "vatNumber": "VAT Number",
+                "totalOrders": "Total Orders",
+                "totalRevenue": "Total Revenue",
+                "rating": "Rating",
+                "noDocuments": "No documents uploaded",
+                "viewDocument": "View Document",
+                "download": "Download",
+                "approve": "Approve Verification",
+                "reject": "Reject Verification",
+                "ban": "Ban User",
+                "rejectReasonTitle": "Rejection Reason",
+                "rejectReasonDesc": "Please provide a reason for rejecting this user.",
+                "rejectReasonPlaceholder": "Reason...",
+                "cancel": "Cancel",
+                "confirmReject": "Reject User",
+                "imagePreview": "Document Preview",
+                "verificationApproved": "User verified successfully",
+                "verificationRejected": "User verification rejected",
+                "userBanned": "User has been banned"
+            }
+        },
+        "disputes": {
+            "title": "Dispute Management",
+            "subtitle": "Handle conflicts between tenants and vendors",
+            "table": {
+                "id": "Dispute ID",
+                "orderId": "Order ID",
+                "complainant": "Complainant",
+                "respondent": "Respondent",
+                "status": "Status",
+                "date": "Date Created",
+                "actions": "Actions"
+            },
+            "status": {
+                "OPEN": "Open",
+                "RESOLVED": "Resolved",
+                "ESCALATED": "Escalated"
+            },
+            "actions": {
+                "resolve": "Resolve",
+                "viewDetails": "View Details"
+            },
+            "resolveDialog": {
+                "title": "Resolve Dispute",
+                "desc": "Select the appropriate decision to close this dispute.",
+                "decision": "Decision",
+                "refundTenant": "Full Refund to Tenant",
+                "releaseVendor": "Release Funds to Vendor",
+                "partialRefund": "Partial Refund",
+                "submit": "Submit Decision",
+                "success": "Dispute resolved successfully"
+            }
+        }
+    },
     "DashboardHeader": {
         "searchPlaceholder": "Search equipment, orders, customers...",
         "userName": "User",
         "userRole": "Administrator",
+        "role_vendor": "Vendor",
+        "role_tenant": "Tenant",
         "profile": "Profile",
+        "companyProfile": "Company Profile",
         "settings": "Settings",
         "logout": "Logout"
     },

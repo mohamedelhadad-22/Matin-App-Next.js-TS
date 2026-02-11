@@ -11,6 +11,15 @@ export interface EquipmentSpecifications {
     // operating_weight?: string;
 }
 
+// Media item structure for creating equipment
+export interface MediaItem {
+    file_url: string;
+    file_type: 'IMAGE' | 'VIDEO' | 'DOCUMENT';
+    is_primary: boolean;
+    title?: string;
+    display_order?: number;
+}
+
 // Response includes id, name, status, owner_id
 export interface Equipment {
     id: number;
@@ -69,6 +78,10 @@ export interface CreateEquipmentDto {
     address_id: number;
     with_operator: boolean;
     operator_cost?: number;
+
+    // Media items to be included inline
+    media_items?: MediaItem[];
+    sector_ids?: number[];
 }
 
 // Update Equipment (Payload)

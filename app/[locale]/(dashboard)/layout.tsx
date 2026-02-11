@@ -23,7 +23,7 @@ function DashboardContent({
             <main
                 className={cn(
                     "h-full transition-all duration-300 ease-in-out",
-                    isCollapsed ? "md:pl-20 rtl:md:pr-20 rtl:md:pl-0" : "md:pl-72 rtl:md:pr-72 rtl:md:pl-0"
+                    isCollapsed ? "md:ps-20" : "md:ps-72"
                 )}
             >
                 <VerificationBanner />

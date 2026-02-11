@@ -12,9 +12,9 @@ export default function AddEquipmentPage() {
     return (
         <div className="p-4 md:p-8 max-w-7xl mx-auto space-y-6">
             <div className="flex items-center gap-4">
-                <Link href="/dashboard">
+                <Link href="/dashboard/fleet">
                     <Button variant="ghost" size="icon" className="group">
-                        <ArrowLeft className="h-5 w-5 text-gray-500 group-hover:text-matin-primary transition-colors" />
+                        <ArrowLeft className="h-5 w-5 text-gray-500 group-hover:text-matin-primary transition-colors rtl:rotate-180" />
                     </Button>
                 </Link>
                 <div>
