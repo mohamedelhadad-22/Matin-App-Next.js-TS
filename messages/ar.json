@@ -1,16 +1,79 @@
 {
+    "auth": {
+        "login": {
+            "title": "تسجيل الدخول",
+            "subtitle": "أدخل بياناتك للدخول إلى المنصة",
+            "emailLabel": "البريد الإلكتروني",
+            "emailPlaceholder": "name@example.com",
+            "passwordLabel": "كلمة المرور",
+            "passwordPlaceholder": "••••••••",
+            "submit": "دخول",
+            "noAccount": "ليس لديك حساب؟",
+            "createAccount": "إنشاء حساب جديد",
+            "successWelcome": "مرحباً بعودتك، {name}",
+            "failed": "فشل تسجيل الدخول",
+            "promoTitle": "متين للمعدات الثقيلة",
+            "promoDesc": "إدارة ذكية لأسطولك ومشاريعك."
+        },
+        "register": {
+            "title": "إنشاء حساب جديد",
+            "subtitle": "اختر نوع الحساب المناسب لاحتياجاتك",
+            "step2Title": "إنشاء الحساب",
+            "individual": "مستخدم فرد",
+            "individualDesc": "أرغب في استئجار معدات لمشاريعي الخاصة",
+            "company": "شركة / مورد",
+            "companyDesc": "أرغب في تأجير معداتي أو الاستئجار كشركة",
+            "continue": "متابعة",
+            "back": "رجوع",
+            "submit": "إنشاء الحساب",
+            "alreadyHaveAccount": "لديك حساب بالفعل؟",
+            "login": "تسجيل الدخول",
+            "success": "تم إنشاء الحساب بنجاح!",
+            "promoTitle": "متين للمعدات الثقيلة",
+            "promoDesc": "انضم لأكبر شبكة لتأجير المعدات في المملكة. أدر أسطولك، تابع طلباتك، وضاعف أرباحك بكل سهولة."
+        },
+        "fields": {
+            "fullName": "الاسم الكامل",
+            "email": "البريد الإلكتروني",
+            "phone": "رقم الجوال",
+            "password": "كلمة المرور",
+            "confirmPassword": "تأكيد كلمة المرور",
+            "companyName": "اسم المنشأة",
+            "crNumber": "السجل التجاري",
+            "vatNumber": "الرقم الضريبي"
+        },
+        "validation": {
+            "required": "هذا الحقل مطلوب",
+            "emailInvalid": "البريد الإلكتروني غير صحيح",
+            "passwordRequired": "كلمة المرور مطلوبة",
+            "fullNameMin": "الاسم الكامل مطلوب ({min} أحرف على الأقل)",
+            "phoneMin": "رقم الجوال يجب أن يكون {min} أرقام على الأقل",
+            "passwordMin": "كلمة المرور يجب أن تكون {min} أحرف على الأقل",
+            "confirmPasswordRequired": "تأكيد كلمة المرور مطلوب",
+            "passwordMismatch": "كلمات المرور غير متطابقة",
+            "companyNameRequired": "اسم الشركة مطلوب",
+            "crNumberRequired": "رقم السجل التجاري مطلوب ({min} أرقام)"
+        }
+    },
     "dashboard": {
         "sidebar": {
             "overview": "نظرة عامة",
             "fleet": "إدارة الأسطول",
-            "vendorOrders": "الطلبات الواردة",
+            "vendorOrders": "طلبات التأجير",
             "wallet": "المحفظة",
+            "team": "فريق العمل",
+            "trust_center": "مركز الثقة",
             "projects": "مشاريعي",
             "myOrders": "طلباتي",
             "invoices": "الفواتير",
             "role_vendor": "مورد",
-            "role_tenant": "عميل",
-            "settings": "الإعدادات"
+            "role_tenant": "مستأجر",
+            "role_admin": "مسؤول",
+            "settings": "الإعدادات",
+            "users_management": "إدارة المستخدمين",
+            "companies": "إدارة الشركات",
+            "disputes": "النزاعات",
+            "platform_settings": "إعدادات المنصة"
         },
         "equipment": {
             "title": "قائمة المعدات",

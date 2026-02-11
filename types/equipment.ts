@@ -1,68 +1,77 @@
+// Enums
+export type EquipmentStatus = 'AVAILABLE' | 'RENTED' | 'MAINTENANCE' | 'RESERVED';
+export type FuelType = 'DIESEL' | 'PETROL' | 'ELECTRIC' | 'HYBRID';
+export type EquipmentCondition = 'NEW' | 'USED' | 'REFURBISHED';
 
-// 1. Sectors
-export type EquipmentSector =
-    | "Construction"
-    | "Industrial"
-    | "Agricultural"
-    | "Transportation"
-    | "Mining"
-    | "Oil & Gas"
-    | "Marine"
-    | "Other";
+// "Uses JSONB for flexible specs"
+export interface EquipmentSpecifications {
+    [key: string]: string | number | boolean;
+    // bucket_capacity?: string;
+    // max_digging_depth?: string;
+    // operating_weight?: string;
+}
 
-// 2. Categories
-export type EquipmentCategory =
-    | "Heavy Machinery"
-    | "Earthmovers"
-    | "Loaders"
-    | "Generators"
-    | "Cranes";
-
-// 3. Status
-export type EquipmentStatus = "available" | "rented" | "maintenance";
-
-// 4. Equipment
+// Response includes id, name, status, owner_id
 export interface Equipment {
-    id: string | number;
+    id: number;
+    owner_id: number;
     name: string;
-    description?: string;
     status: EquipmentStatus;
-    category: EquipmentCategory;
-    sectors: EquipmentSector[];
-    // media
-    media: string[];
 
-    // price
-    dailyRate: number;
-    monthlyRate?: number;
-    yearlyRate?: number;
-    price?: number;
-
-    // Technical specifications
+    // category
+    category: string;
+    subcategory: string;
     brand: string;
     model: string;
-    manufacturingYear: number;
-    powerCapacity?: string;
-    fuelType?: string;
-    meterReading?: number;
+    manufacturing_year: number;
 
-    // with operator
-    withOperator: boolean;
-    operatorCost?: number;
+    // fuel type and condition
+    fuel_type: FuelType;
+    condition: EquipmentCondition;
 
-    // Address
-    location: string;
-    coordinates?: { lat: number; lng: number };
-    latitude: number,
-    longitude: number,
+    // prices
+    price_daily: number;
+    price_monthly: number;
 
-    // Owner
-    ownerId: number;
+    // operation details
+    address_id: number;
+    with_operator: boolean;
+    operator_cost?: number;
 
-    // Dates
-    createdAt: string;
-    updatedAt: string;
+    // specifications
+    specifications: EquipmentSpecifications;
 
-    // rent frequency
-    frequencyRent: string
+    // Upload endpoint exists, implies we can fetch them
+    primary_image_url?: string;
+    images?: string[];
+
+    created_at?: string;
+    updated_at?: string;
+}
+
+// Request Body (Payload)
+export interface CreateEquipmentDto {
+    name: string;
+    category: string;
+    subcategory: string;
+    brand: string;
+    model: string;
+    manufacturing_year: number;
+    fuel_type: FuelType;
+    condition: EquipmentCondition;
+
+    price_daily: number;
+    price_monthly: number;
+
+    // JSONB
+    specifications: EquipmentSpecifications;
+
+    address_id: number;
+    with_operator: boolean;
+    operator_cost?: number;
+}
+
+// Update Equipment (Payload)
+export interface UpdateEquipmentDto extends Partial<CreateEquipmentDto> {
+    status?: EquipmentStatus;
 }

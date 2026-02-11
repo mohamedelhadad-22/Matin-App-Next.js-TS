@@ -6,11 +6,11 @@ import {
     Wallet,
     ShoppingCart,
     HardHat,
-    ShieldCheck,
     Users,
-    BarChart3
+    Building2,
+    Gavel
 } from "lucide-react"
-
+import { User } from "@/types/auth"
 // Define the shape of a navigation item
 export type NavItem = {
     title: string
@@ -21,15 +21,16 @@ export type NavItem = {
 
 // The "Smart" Configuration Object
 export const dashboardConfig = {
-    // 1. Vendor Links (المؤجر)
+    // 1. Vendor Links
     vendor: [
         { title: "overview", href: "/dashboard", icon: LayoutDashboard, color: "text-sky-500" },
         { title: "fleet", href: "/dashboard/fleet", icon: Truck, color: "text-violet-500" },
         { title: "vendorOrders", href: "/dashboard/vendor-orders", icon: FileText, color: "text-pink-700" },
         { title: "wallet", href: "/dashboard/wallet", icon: Wallet, color: "text-orange-700" },
+        { title: "team", href: "/dashboard/company/team", icon: Users, color: "text-blue-600" },
+        { title: "trust_center", href: "/dashboard/company/trust", icon: Gavel, color: "text-yellow-600" },
     ],
-
-    // 2. Tenant Links (المستأجر)
+    // 2. Tenant Links
     tenant: [
         { title: "overview", href: "/dashboard", icon: LayoutDashboard, color: "text-sky-500" },
         { title: "projects", href: "/dashboard/projects", icon: HardHat, color: "text-emerald-500" },
@@ -37,11 +38,30 @@ export const dashboardConfig = {
         { title: "invoices", href: "/dashboard/invoices", icon: FileText, color: "text-pink-700" },
     ],
 
-    // 3. Super Admin Links (الوحش 🦁) - هنضيفه بسهولة هنا
+    // 3. Super Admin Links
     admin: [
-        { title: "overview", href: "/dashboard/admin", icon: BarChart3, color: "text-indigo-500" },
-        { title: "users_management", href: "/dashboard/admin/users", icon: Users, color: "text-blue-500" },
-        { title: "disputes", href: "/dashboard/admin/disputes", icon: ShieldCheck, color: "text-red-500" },
-        { title: "platform_settings", href: "/dashboard/admin/settings", icon: Settings, color: "text-gray-500" },
+        { title: "overview", href: "/admin", icon: LayoutDashboard },
+        { title: "users_management", href: "/admin/users", icon: Users },
+        { title: "companies", href: "/admin/companies", icon: Building2 },
+        { title: "disputes", href: "/admin/disputes", icon: Gavel },
+        { title: "platform_settings", href: "/admin/settings", icon: Settings },
     ]
+
+}
+
+export function getNavItems(user: User | null): NavItem[] {
+    if (!user) return []
+
+    // 1. لو أدمن -> رجع قائمة الأدمن
+    if (user.role === 'ADMIN') {
+        return dashboardConfig.admin
+    }
+
+    // 2. لو شركة -> رجع قائمة الفيندور
+    if (user.entity_type === 'COMPANY') {
+        return dashboardConfig.vendor
+    }
+
+    // 3. غير كدة (فرد) -> رجع قائمة التينانت
+    return dashboardConfig.tenant
 }
