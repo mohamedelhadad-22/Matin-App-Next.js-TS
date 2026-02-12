@@ -36,17 +36,17 @@ export default function Sidebar() {
     const { isCollapsed, toggleSidebar } = useSidebar();
     const { user, logout } = useAuth();
 
-    // get the list based on the user (filtered by entity_type)
+    // get the list based on the user (Admin list if admin, Vendor list if vendor...)
     const routes = getNavItems(user);
 
-    const isActive = (path: string) => pathname === path;
+    const isActive = (path: string) => pathname === path || pathname.startsWith(`${path}/`);
 
     const toggleLanguage = () => {
         const nextLocale = locale === 'ar' ? 'en' : 'ar';
         router.replace(pathname, { locale: nextLocale });
     };
 
-    // if no user (still loading), return null
+    // if no user (still loading), return null or skeleton
     if (!user) return null;
 
     // Display name with fallback
@@ -54,7 +54,10 @@ export default function Sidebar() {
     const initials = getInitials(user.full_name, user.email);
 
     // Entity type label (translated)
-    const entityLabel = user.entity_type === 'COMPANY' ? t('entity_company') : t('entity_individual');
+    // لاحظ: قمنا بإضافة شرط للأدمن هنا
+    const entityLabel = user.user_role === 'ADMIN'
+        ? (locale === 'ar' ? 'مدير النظام' : 'Administrator')
+        : (user.entity_type === 'COMPANY' ? t('entity_company') : t('entity_individual'));
 
     return (
         <aside
@@ -72,7 +75,6 @@ export default function Sidebar() {
                 )}
                 aria-label="Toggle Sidebar"
             >
-                {/* In RTL the chevron should flip direction */}
                 {isCollapsed
                     ? <ChevronRight size={16} className="rtl:rotate-180" />
                     : <ChevronLeft size={16} className="rtl:rotate-180" />
@@ -98,7 +100,7 @@ export default function Sidebar() {
 
                             {/* User Role Badge */}
                             <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded-full font-normal uppercase">
-                                {user.role === 'ADMIN' ? t('role_admin') : (user.entity_type === 'COMPANY' ? t('role_vendor') : t('role_tenant'))}
+                                {user.user_role === 'ADMIN' ? 'ADMIN' : (user.entity_type === 'COMPANY' ? 'VENDOR' : 'TENANT')}
                             </span>
                         </h1>
                         <p className="text-[10px] text-matin-secondary opacity-80 mt-1">
@@ -109,13 +111,13 @@ export default function Sidebar() {
             </div>
 
             {/* Navigation Loop */}
-            <nav className="flex flex-col gap-2 px-3 flex-1 overflow-y-auto custom-scrollbar">
+            <nav className="flex flex-col gap-2 px-3 flex-1 overflow-y-unset custom-scrollbar">
                 {routes.map((route: any) => (
                     <SidebarItem
                         key={route.href}
                         href={route.href}
                         icon={<route.icon size={20} />}
-                        text={t(route.title)}
+                        text={t(route.title) || route.title} // Fallback if translation missing
                         active={isActive(route.href)}
                         collapsed={isCollapsed}
                         color={route.color}
@@ -123,10 +125,8 @@ export default function Sidebar() {
                 ))}
             </nav>
 
-            {/* Footer Actions (Language & User Profile) */}
+            {/* Footer Actions */}
             <div className="p-3 border-t border-white/10 mt-auto flex flex-col gap-2">
-
-                {/* Language Switcher */}
                 <button
                     onClick={toggleLanguage}
                     className={cn(
@@ -142,12 +142,10 @@ export default function Sidebar() {
                     )}
                 </button>
 
-                {/* User Profile / Logout */}
                 <div className={cn(
                     "w-full flex items-center gap-3 p-3 rounded-lg bg-black/20",
                     isCollapsed ? 'justify-center p-2' : ''
                 )}>
-                    {/* Dynamic Avatar with Initials */}
                     <div className="w-8 h-8 rounded-full bg-matin-action flex items-center justify-center text-white font-bold shrink-0 text-sm">
                         {initials}
                     </div>
@@ -165,13 +163,12 @@ export default function Sidebar() {
                         </button>
                     )}
                 </div>
-
             </div>
         </aside>
     );
 }
 
-// Reusable Nav Item
+// Reusable Nav Item (نفس الـ Component الفرعي بالظبط)
 function SidebarItem({ href, icon, text, active, collapsed, color }: any) {
     return (
         <Link
@@ -184,19 +181,16 @@ function SidebarItem({ href, icon, text, active, collapsed, color }: any) {
                 collapsed ? 'justify-center' : ''
             )}
         >
-            {/* Icon */}
-            <span className={cn("shrink-0 transition-colors", !active && color ? color : "")}>
+            <span className={cn("shrink-0 transition-colors", !active && color ? color : "text-white")}>
                 {icon}
             </span>
 
-            {/* Text */}
             {!collapsed && (
-                <span className="whitespace-nowrap overflow-hidden animate-fade-in text-sm">
+                <span className="whitespace-nowrap overflow-hidden text-ellipsis animate-fade-in text-sm">
                     {text}
                 </span>
             )}
 
-            {/* Tooltip for collapsed sidebar */}
             {collapsed && (
                 <div className={cn(
                     "absolute bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap z-50 pointer-events-none shadow-md",

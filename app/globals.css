@@ -4,18 +4,18 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  /* 1. define matin colors */
+  /* 1. Define Matin Brand Colors */
   --color-matin-primary: #0F3D2E;
   --color-matin-action: #F7931E;
   --color-matin-secondary: #D6C4A1;
   --color-matin-text: #475569;
 
-  /* 2. define fonts */
+  /* 2. Define Fonts */
   --font-ibm: var(--font-ibm);
   --font-cairo: var(--font-cairo);
   --font-sans: var(--font-ibm), ui-sans-serif, system-ui;
 
-  /* 3. define shadcn colors */
+  /* 3. Link Shadcn Variables */
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
 
@@ -48,7 +48,7 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
 
-  /* define animations for accordion and others */
+  /* Animation Definitions */
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
 
@@ -73,9 +73,10 @@
   }
 }
 
-/* 4. define shadcn colors */
+/* 4. Define Color Modes (Clean & Professional) */
 @layer base {
   :root {
+    /* --- Light Mode (Clean White) --- */
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
@@ -85,7 +86,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
+    /* Primary: Matin Green */
+    --primary: 160 61% 15%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -102,42 +104,56 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 160 61% 15%;
+    /* Green Ring */
 
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
+    /* --- Dark Mode (Professional Slate) --- */
+    /* Background: Deep Slate (Not Black, Not Green) */
+    --background: 222.2 47% 11%;
+    /* Foreground: Pure White */
     --foreground: 210 40% 98%;
 
-    --card: 222.2 84% 4.9%;
+    /* Card: Slightly lighter Slate for elevation */
+    --card: 217 33% 17%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222.2 84% 4.9%;
+    /* Popover: Same as Card */
+    --popover: 217 33% 17%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    /* Primary: In Dark Mode, we use the ORANGE or Lighter Green for contrast */
+    /* Using a lighter shade of your green to make it readable */
+    --primary: 160 50% 40%;
+    --primary-foreground: 0 0% 100%;
 
+    /* Secondary: Darker elements */
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
 
+    /* Muted: Gray text */
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
+    /* Accent: For hover states */
     --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
+    /* Border: Subtle Slate Border */
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+
+    /* Ring: Orange for focus (High visibility) */
+    --ring: 32 91% 54%;
   }
 
-  /* define matin styles */
+  /* General Styles */
   html {
     scrollbar-gutter: stable;
   }
@@ -146,10 +162,13 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-ibm);
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
+    width: 100%;
   }
 
-  /* fix default border */
   * {
     border-color: var(--color-border);
+    /* Removed global transition to prevent lag, can be added to specific elements */
   }
 }

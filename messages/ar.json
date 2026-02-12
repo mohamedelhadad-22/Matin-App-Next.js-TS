@@ -78,8 +78,11 @@
             "role_vendor": "مورد",
             "role_tenant": "مستأجر",
             "role_admin": "مسؤول",
-            "entity_company": "شركة",
-            "entity_individual": "فرد",
+            "COMPANY": "شركة",
+            "INDIVIDUAL": "فرد",
+            "roles": {
+                "admin": "مدير النظام"
+            },
             "settings": "الإعدادات",
             "users_management": "إدارة المستخدمين",
             "companies": "إدارة الشركات",
@@ -133,7 +136,8 @@
                 "activeRentals": {
                     "title": "المعدات المؤجرة حالياً",
                     "timeRemaining": "متبقي {days} أيام",
-                    "return": "إرجاع المعدة"
+                    "return": "إرجاع المعدة",
+                    "viewAll": "عرض الكل"
                 },
                 "orders": {
                     "title": "أحدث الطلبات",
@@ -145,6 +149,20 @@
                 },
                 "quickOrder": {
                     "title": "إعادة الطلب السريع"
+                }
+            },
+            "admin": {
+                "welcome": "مرحباً، مدير النظام",
+                "subtitle": "جميع أنظمة المنصة تعمل بشكل طبيعي.",
+                "stats": {
+                    "users": "إجمالي المستخدمين",
+                    "pending": "طلبات معلقة",
+                    "disputes": "نزاعات نشطة",
+                    "revenue": "الإيرادات"
+                },
+                "chart": {
+                    "title": "اتجاهات التسجيل",
+                    "newUsers": "مستخدم جديد"
                 }
             }
         },
@@ -260,15 +278,23 @@
         }
     },
     "DashboardHeader": {
-        "searchPlaceholder": "ابحث عن معدات، طلبات، عملاء...",
         "userName": "المستخدم",
         "userRole": "مدير النظام",
-        "role_vendor": "مورد",
-        "role_tenant": "مستأجر",
+        "COMPANY": "مورد",
+        "INDIVIDUAL": "مستأجر",
+        "roles": {
+            "admin": "مدير النظام"
+        },
         "profile": "الملف الشخصي",
         "companyProfile": "ملف الشركة",
         "settings": "الإعدادات",
-        "logout": "تسجيل الخروج"
+        "logout": "تسجيل الخروج",
+        "searchPlaceholder": "بحث...",
+        "role_admin": "مدير النظام",
+        "role_vendor": "شركة / مورد",
+        "role_tenant": "فرد / مستأجر",
+        "billing": "المدفوعات",
+        "ADMIN": "مدير النظام"
     },
     "Stats": {
         "totalEquipment": "إجمالي المعدات",

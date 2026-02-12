@@ -1,12 +1,10 @@
+import Cookies from 'js-cookie';
+
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/';
 
-// helper function to get the token from local storage
-function getToken() {
-    if (typeof window !== 'undefined') {
-        // we will use cookies instead of local storage
-        return localStorage.getItem('token');
-    }
-    return null;
+// helper function to get the token from cookies
+function getToken(): string | undefined {
+    return Cookies.get('token');
 }
 
 interface FetchOptions extends RequestInit {
@@ -47,8 +45,11 @@ export async function apiClient<T>(endpoint: string, options: FetchOptions = {})
         if (!response.ok) {
             // handling session timeout (401 Unauthorized)
             if (response.status === 401) {
-                // you can redirect to the login page here
-                // window.location.href = '/auth/login';
+                // Clear the invalid token cookie and redirect
+                Cookies.remove('token', { path: '/' });
+                if (typeof window !== 'undefined') {
+                    window.location.href = '/auth/login';
+                }
                 throw new Error('session timeout, please login again');
             }
 

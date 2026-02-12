@@ -27,7 +27,7 @@ export interface User {
     phone: string;
     is_active: boolean;
     is_verified: boolean;
-    role: UserRole;
+    user_role: UserRole;
     entity_type: EntityType;
     plan_type: PlanType;
     verification_status: string;

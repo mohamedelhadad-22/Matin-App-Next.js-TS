@@ -3,7 +3,7 @@
 import { useAuth } from "@/components/providers/auth-provider"
 import { CompanyDashboard } from "@/components/dashboard/company/company-overview"
 import { IndividualDashboard } from "@/components/dashboard/individual/individual-overview"
-import { WelcomeHeader } from "@/components/dashboard/shared/welcome-header"
+import { WelcomeHeader } from "@/components/shared/welcome-header"
 import { Loader2 } from "lucide-react"
 
 export default function DashboardPage() {
@@ -24,7 +24,6 @@ export default function DashboardPage() {
     return (
         <div className="p-4 md:p-8 max-w-7xl mx-auto space-y-8">
             <WelcomeHeader />
-
             {isCompany ? (
                 <CompanyDashboard />
             ) : (

@@ -76,8 +76,11 @@
             "role_vendor": "Vendor",
             "role_tenant": "Tenant",
             "role_admin": "Admin",
-            "entity_company": "Company",
-            "entity_individual": "Individual",
+            "COMPANY": "Company",
+            "INDIVIDUAL": "Individual",
+            "roles": {
+                "admin": "Administrator"
+            },
             "settings": "Settings",
             "team": "Team",
             "trust_center": "Trust Center",
@@ -133,7 +136,8 @@
                 "activeRentals": {
                     "title": "Active Rentals",
                     "timeRemaining": "{days} days remaining",
-                    "return": "Return Equipment"
+                    "return": "Return Equipment",
+                    "viewAll": "View All"
                 },
                 "orders": {
                     "title": "Recent Orders",
@@ -145,6 +149,20 @@
                 },
                 "quickOrder": {
                     "title": "Quick Re-order"
+                }
+            },
+            "admin": {
+                "welcome": "Welcome, Administrator",
+                "subtitle": "Platform systems are running smoothly.",
+                "stats": {
+                    "users": "Total Users",
+                    "pending": "Pending Verifications",
+                    "disputes": "Active Disputes",
+                    "revenue": "Total Revenue"
+                },
+                "chart": {
+                    "title": "Registration Trends",
+                    "newUsers": "New Users"
                 }
             }
         },
@@ -203,6 +221,12 @@
                 "remove": "Remove",
                 "maxSize": "Max 5MB per image"
             }
+        },
+        "role_admin": "Admin",
+        "COMPANY": "Company",
+        "INDIVIDUAL": "Individual",
+        "roles": {
+            "admin": "Administrator"
         }
     },
     "admin": {
@@ -280,10 +304,17 @@
         "userRole": "Administrator",
         "role_vendor": "Vendor",
         "role_tenant": "Tenant",
+        "role_admin": "Admin",
+        "COMPANY": "Company",
+        "INDIVIDUAL": "Individual",
+        "roles": {
+            "admin": "Administrator"
+        },
         "profile": "Profile",
         "companyProfile": "Company Profile",
         "settings": "Settings",
-        "logout": "Logout"
+        "logout": "Logout",
+        "ADMIN": "Admin"
     },
     "Stats": {
         "totalEquipment": "Total Equipment",

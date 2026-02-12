@@ -7,6 +7,7 @@ import { Toaster } from 'sonner';
 import { IBM_Plex_Sans } from 'next/font/google';
 import { Cairo } from 'next/font/google';
 import "../globals.css";
+import { ThemeProvider } from "@/components/providers/theme-provider"
 
 const ibmPlex = IBM_Plex_Sans({
   subsets: ['latin'],
@@ -42,20 +43,27 @@ export default async function LocaleLayout({
   const isArabic = locale === 'ar';
 
   return (
-    <html lang={locale} dir={isArabic ? 'rtl' : 'ltr'}>
+    // 👇 التعديل هنا: ضفنا suppressHydrationWarning في تاج الـ html
+    <html lang={locale} dir={isArabic ? 'rtl' : 'ltr'} suppressHydrationWarning>
       <body
         className={`${ibmPlex.variable} ${cairo.variable} ${isArabic ? 'font-cairo' : 'font-ibm'}`}
-        suppressHydrationWarning={true}
+      // 👆 شلناها من هنا خلاص مالهاش لازمة في الـ body مع next-themes
       >
-        <NextIntlClientProvider messages={messages}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <NextIntlClientProvider messages={messages}>
 
-          <AuthProvider>
-            {children}
-            <Toaster position="top-center" richColors
-              closeButton />
-          </AuthProvider>
+            <AuthProvider>
+              {children}
+              <Toaster position="top-center" richColors closeButton />
+            </AuthProvider>
 
-        </NextIntlClientProvider>
+          </NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

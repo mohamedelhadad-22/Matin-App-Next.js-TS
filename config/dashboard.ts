@@ -60,7 +60,7 @@ export function getNavItems(user: User | null): NavItem[] {
     let items: NavItem[] = []
 
     // 1. لو أدمن -> رجع قائمة الأدمن
-    if (user.role === 'ADMIN') {
+    if (user.user_role === 'ADMIN') {
         items = dashboardConfig.admin
     }
     // 2. لو شركة -> رجع قائمة الفيندور

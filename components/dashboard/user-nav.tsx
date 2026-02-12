@@ -26,11 +26,9 @@ export default function UserNav() {
         ? user.full_name.trim().split(/\s+/).map(n => n[0]).slice(0, 2).join('').toUpperCase()
         : displayName[0].toUpperCase();
 
-    const roleLabel = user?.role === 'ADMIN'
-        ? t('userRole')
-        : user?.entity_type === 'COMPANY'
-            ? t('role_vendor')
-            : t('role_tenant');
+    const roleLabel = user?.user_role === 'ADMIN'
+        ? t('role_admin')
+        : user?.entity_type ? t(user.entity_type) : t('userRole');
 
     return (
         <DropdownMenu>

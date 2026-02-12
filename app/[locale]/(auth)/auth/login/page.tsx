@@ -81,7 +81,7 @@ export default function LoginPage({ params }: { params: Promise<{ locale: string
                 phone: "", // Not returned in login response
                 is_active: true, // Assuming active if login successful
                 is_verified: response.is_verified,
-                role: response.user_role,
+                user_role: response.user_role,
                 entity_type: response.entity_type,
                 plan_type: response.plan_type,
                 verification_status: response.verification_status,
@@ -91,8 +91,12 @@ export default function LoginPage({ params }: { params: Promise<{ locale: string
 
             toast.success(isRTL ? "تم تسجيل الدخول بنجاح" : "Logged in successfully")
 
-            // التوجيه للداشبورد مباشرة
-            router.push('/dashboard')
+            // Redirect based on Role with explicit check
+            if (response.user_role === 'ADMIN') {
+                router.replace('/admin'); // Redirect Admins to their specific layout
+            } else {
+                router.replace('/dashboard'); // Redirect Companies/Individuals
+            }
 
         } catch (error: any) {
             console.error(error)

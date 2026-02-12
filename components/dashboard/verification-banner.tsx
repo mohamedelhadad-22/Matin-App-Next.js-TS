@@ -12,7 +12,7 @@ export default function VerificationBanner() {
     const isRtl = locale === 'ar'
 
     // If no user or already verified, render nothing
-    if (!user || user.verification_status === 'VERIFIED') return null
+    if (!user || user.user_role === 'ADMIN' || user.verification_status === 'VERIFIED') return null
 
     const isPending = user.verification_status === 'PENDING'
     const isRejected = user.verification_status === 'REJECTED'
